@@ -432,41 +432,80 @@ int main() {
 	}*/
 
 	//6번
+	
 	srand(time(0));
 	int Player_money = 100;
 	int Player_select_Number;
-	int Player_Batting;
+	int Player_Batting=999999;
+	int Player_Winning_Sum=0;
 	int computer_OddEvenNumber;
+	bool regameTrigger = false;
 	
 
-	while (Player_money>0){
-		printf("현재금액 : %d\n", Player_money);
-		printf("플레이어 : 홀짝을 선택해주세요\n 1.홀수 2.짝수\n");
-		std::cin >> Player_select_Number;
+	while (Player_money>0 || regameTrigger ==true){
 		do
 		{
-			printf("배팅금액을 입력해주세요\n");
+			printf("현재금액 : %d\n", Player_money);
+			printf("플레이어 : 홀짝을 선택해주세요\n1.홀수 2.짝수\n");
+			std::cin >> Player_select_Number;
+
+			if (Player_select_Number > 2) {
+				printf("잘못된 입력입니다 .\n\n");
+			}
+			else {
+				continue;
+			}
+
+		} while (Player_select_Number>2);
+		//보기에 없는 숫자 선택시 반복
+
+
+		while ((Player_money < Player_Batting) && regameTrigger == false) {
+			printf("\n배팅금액을 입력해주세요\n\n");
 			std::cin >> Player_Batting;
 
-		} while (Player_money > Player_Batting);
+			if (Player_Batting > Player_money) {
+				printf("\n다시 입력해주세요 . \n\n");
 
-		
-	
-		Player_money -= Player_Batting;
-		computer_OddEvenNumber = rand() % 2 + 1;
-
+			}
+			else {
+				printf("\n배팅이 올바르게 완료되었습니다. \n\n");
+			}
+		}
+		computer_OddEvenNumber = rand() % 2 + 1;//컴퓨터 홀짝 랜덤
+		Player_money -= Player_Batting; //돈 차감
 		if (Player_select_Number == computer_OddEvenNumber) {
-			printf("플레이어 승리\n");
-			printf("두 가지중 한 가지를 선택해주세요.\n 1.연승도전 2.스탑\n");
-			std::cin >> Player_select_Number;
+			do
+			{
+				printf("컴퓨터가 선택한 수 : %d\n", computer_OddEvenNumber);
+				printf("플레이어 승리\n");
+				printf("두 가지중 한 가지를 선택해주세요.\n 1.연승도전 2.스탑\n");
+				std::cin >> Player_select_Number;
+
+				if (Player_select_Number > 2) {
+					printf("잘못된 입력입니다 .\n\n");
+				}
+				else {
+					continue;
+				}
+
+			} while (Player_select_Number>2);
+			//보기에 없는 숫자 선택시 반복
+			
+			
 			switch (Player_select_Number) {
-				case 1:
-					//연승도전 코드
+			case 1:
+
+					Player_Batting *= 2;
+					regameTrigger = true;
+					printf("현재 배팅금액은 %d 입니다.\n\n",Player_Batting);
+					printf("이어서 진행합니다. \n");
 					break;
 				case 2: 
-					printf("이긴금액을 소지금액에 추가했습니다.\n");
+					regameTrigger = false;
+					printf("\n이긴금액을 소지금액에 추가했습니다.\n\n");
 					Player_money += Player_Batting * 2;
-					printf("현재금액 : %d\n",Player_money);
+					printf("현재금액 : %d\n\n",Player_money);
 					break;
 				default:
 					break;
@@ -474,7 +513,8 @@ int main() {
 			
 		}
 		else {
-			printf("플레이어 패배\n");
+			printf("컴퓨터가 선택한 수 : %d\n", computer_OddEvenNumber);
+			printf("플레이어 패배\n\n");
 		}
 	}
 }
