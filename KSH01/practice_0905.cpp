@@ -11,7 +11,7 @@
 int Random_int_Return(int minRange, int maxRange)
 {
 	srand(time(0));
-	int Random_Number = rand() % minRange+1 + maxRange-1;
+	int Random_Number = rand() % (maxRange - minRange + 1)+minRange;
 
 	return Random_Number;
 }
@@ -41,7 +41,6 @@ int YourAge(int age)
 	return 0;
 	
 }
-
 
 //원의 반지름을 입력 받고 넓이 구하기
 //float 파라메터 1개
