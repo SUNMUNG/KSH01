@@ -460,13 +460,16 @@ int main() {
 		//보기에 없는 숫자 선택시 반복
 
 
-		while ((Player_money < Player_Batting) && regameTrigger == false) {
+		while (((Player_money < Player_Batting) && (regameTrigger == false)) || (Player_Batting >= 0)) {
 			printf("\n배팅금액을 입력해주세요\n\n");
 			std::cin >> Player_Batting;
 
 			if (Player_Batting > Player_money) {
 				printf("\n다시 입력해주세요 . \n\n");
 
+			}
+			else if (Player_Batting == 0) {
+				printf("\n 0은 입력할수 없습니다. . \n\n");
 			}
 			else {
 				printf("\n배팅이 올바르게 완료되었습니다. \n\n");
