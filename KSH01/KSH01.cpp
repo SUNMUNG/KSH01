@@ -473,7 +473,13 @@ int main() {
 			}
 		}
 		computer_OddEvenNumber = rand() % 2 + 1;//컴퓨터 홀짝 랜덤
-		Player_money -= Player_Batting; //돈 차감
+		if (regameTrigger == false) {
+			Player_money -= Player_Batting;
+		}
+		else {
+			printf("연승 도전 중 \n");
+		}
+		 //돈 차감
 		if (Player_select_Number == computer_OddEvenNumber) {
 			do
 			{
@@ -502,9 +508,15 @@ int main() {
 					printf("이어서 진행합니다. \n");
 					break;
 				case 2: 
+
+					if (regameTrigger == true) {
+						Player_money += Player_Batting;
+					}
+					else{
+						Player_money += Player_Batting * 2;
+					}
 					regameTrigger = false;
-					printf("\n이긴금액을 소지금액에 추가했습니다.\n\n");
-					Player_money += Player_Batting * 2;
+					printf("\n이긴금액을 소지금액에 추가했습니다\n\n");
 					printf("현재금액 : %d\n\n",Player_money);
 					break;
 				default:
@@ -513,6 +525,7 @@ int main() {
 			
 		}
 		else {
+			regameTrigger = false;
 			printf("컴퓨터가 선택한 수 : %d\n", computer_OddEvenNumber);
 			printf("플레이어 패배\n\n");
 		}
