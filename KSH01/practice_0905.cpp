@@ -307,6 +307,9 @@ void PyramidMake(int num)
 		printf("\n");
 	}
 }
+//재귀함수를 이용해서 팩토리얼 값을 만드는 함수 만들기
+//5팩토리얼 = 5 * 4 * 3 * 2 * 1
+
 
 void practice09059()
 {	
@@ -321,8 +324,3 @@ int Factorial(int num) {
 	if (num == 1) return 1;
 	else return num * Factorial(num - 1);
 }
-
-//재귀함수를 이용해서 팩토리얼 값을 만드는 함수 만들기
-//5팩토리얼 = 5 * 4 * 3 * 2 * 1
-
-

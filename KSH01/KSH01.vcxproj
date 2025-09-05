@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="0906weekendPra.cpp" />
     <ClCompile Include="KSH01.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="0906weekendPra.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>
