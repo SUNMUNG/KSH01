@@ -61,3 +61,11 @@ int ToBinary(int);
 void weekendPra8();
 
 void SlotMachine();
+
+void weekendPra9();
+
+void TurnBattle();
+
+void weekendPra10();
+
+void CardGame();
