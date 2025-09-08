@@ -6,6 +6,7 @@
 #include "test.h"
 #include "practice_0905.h"
 #include "0906weekendPra.h"
+#include "practice_0908.h"
 
 
 int main() {
@@ -29,6 +30,15 @@ int main() {
 	//weekendPra9();
 	//weekendPra10();
 
+	//practice09081();
+	//practice09082();
+	//practice09083();
+	//practice09084();
+	//practice09085();
+	//practice09086();
+	//practice09087();
+	//practice0908();
+	practice09089();
 }
 
 
