@@ -27,8 +27,7 @@ int main() {
 	//weekendPra7();
 	//weekendPra8();
 	//weekendPra9();
-	weekendPra10();
-	
+	//weekendPra10();
 
 }
 

@@ -69,3 +69,7 @@ void TurnBattle();
 void weekendPra10();
 
 void CardGame();
+
+void CardPrint(int);
+
+void Regame(int);

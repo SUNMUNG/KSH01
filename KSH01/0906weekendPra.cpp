@@ -146,12 +146,12 @@ void weekendPra7()
 int ToBinary(int num)
 {
 	if (num >= 1) {
-		printf("%d", num%2);
+		printf("%d", num % 2);
 		num /= 2;
 		return ToBinary(num);
 	}
 	else printf("0");
-    //뒤집어 출력	
+	//뒤집어 출력	
 }
 
 //슬롯 머신 게임 만들기
@@ -336,6 +336,7 @@ void CardGame()
 	int PlayerMoney = 10000;
 	int PlayerBatting = -1;
 	int PlayerSelectCard;
+	int PlayerSelectNumber;
 	int DealerCard1=-1;
 	int DealerCard2=-1;
 	int DealerCard3=-1;
@@ -343,62 +344,125 @@ void CardGame()
 
 	printf("도둑잡기 게임을 시작합니다 . \n");
 
+	while (PlayerMoney > 100) {
+		printf("배팅할 금액을 입력해주세요.\n100이하의 숫자 입력시 다시입력\n");
+		printf("현재 금액은 : %d\n", PlayerMoney);
+		std::cin >> PlayerBatting;
 
+		PlayerMoney -= PlayerBatting;
 
-	printf("배팅할 금액을 입력해주세요.\n100이하의 숫자 입력시 다시입력\n");
-	printf("현재 금액은 : %d\n", PlayerMoney);
-	std::cin >> PlayerBatting;
+		Jokerpick = rand() % 3; //0,2이 조커X 1이 조커 // 1/3확률로 조커
 
-	Jokerpick = rand() % 2; //0이 조커X 1이 조커
-
-	if (Jokerpick == 1) {
-		DealerCard1 = Joker;
-	}
-	else
-	{
-		DealerCard1 = rand() % 13 + 1;
-	}
-
-	Jokerpick = rand() % 2;
-
-
-	if (Jokerpick == 1 && DealerCard1 != Joker) {
-			DealerCard2 = Joker;
-	}
-	else
-	{
-		DealerCard2 = rand() % 13 + 1;
-	}
-	
-	do
-	{
-		if (DealerCard1 != Joker && DealerCard2 != Joker) {
-			DealerCard3 = Joker;
+		if (Jokerpick == 1) {
+			DealerCard1 = Joker;
 		}
-		else {
+		else
+		{
+			DealerCard1 = rand() % 13 + 1;
+		}
+
+		Jokerpick = rand() % 2;
+
+
+		if (Jokerpick == 1 && DealerCard1 != Joker) {
+			DealerCard2 = Joker;
+		}
+		else
+		{
 			DealerCard2 = rand() % 13 + 1;
 		}
-	} while (DealerCard2== DealerCard3);
 
-	
-	
-	
-	
+		do
+		{
+			if (DealerCard1 != Joker && DealerCard2 != Joker) {
+				DealerCard3 = Joker;
+			}
+			else {
+				DealerCard3 = rand() % 13 + 1;
+			}
+		} while (!((DealerCard2 != DealerCard3) && (DealerCard1 != DealerCard3)));
 
-	printf("딜러가 뽑은 카드중 하나를 선택해주세요\n");
-	printf("[1.첫번째 2.두번째 3.세번째]\n");
-	std::cin >> PlayerSelectCard;
+		printf("딜러가 뽑은 카드중 하나를 선택해주세요\n");
+		printf("[1.첫번째 2.두번째 3.세번째]\n");
+		std::cin >> PlayerSelectCard;
 
-	if (PlayerSelectCard == 1 && DealerCard1 == Joker) {
-		printf("승리\n");
-	}else if (PlayerSelectCard == 2 && DealerCard2 == Joker) {
-		printf("승리\n");
+		if (PlayerSelectCard == 1 && DealerCard1 == Joker) {
+			PlayerMoney += PlayerBatting * 2;
+			printf("승리\n");
+			printf("컴퓨터가 뽑은 카드: \n");
+			CardPrint(DealerCard1);
+			CardPrint(DealerCard2);
+			CardPrint(DealerCard3);
+			printf("번호를 선택해주세요 : \n");
+			printf("[1.묻고 더블 2.여기서 끝]\n");
+			std::cin >> PlayerSelectNumber;
+			Regame(PlayerSelectNumber);
+		}
+		else if (PlayerSelectCard == 2 && DealerCard2 == Joker) {
+			PlayerMoney += PlayerBatting * 2;
+			printf("승리\n");
+			printf("컴퓨터가 뽑은 카드: \n");
+			CardPrint(DealerCard1);
+			CardPrint(DealerCard2);
+			CardPrint(DealerCard3);
+			/*printf("번호를 선택해주세요 : \n");
+			printf("[1.묻고 더블 2.여기서 끝]\n");
+			std::cin >> PlayerSelectNumber;
+			Regame(PlayerSelectNumber);*/
+		}
+		else if (PlayerSelectCard == 3 && DealerCard3 == Joker) {
+			PlayerMoney += PlayerBatting * 2;
+			printf("승리\n");
+			printf("컴퓨터가 뽑은 카드: \n");
+			CardPrint(DealerCard1);
+			CardPrint(DealerCard2);
+			CardPrint(DealerCard3);
+		/*	printf("번호를 선택해주세요 : \n");
+			printf("[1.묻고 더블 2.여기서 끝]\n");
+			std::cin >> PlayerSelectNumber;
+			Regame(PlayerSelectNumber);*/
+		}
+		else {
+			printf("패배\n");
+			printf("컴퓨터가 뽑은 카드: \n");
+			CardPrint(DealerCard1);
+			CardPrint(DealerCard2);
+			CardPrint(DealerCard3);
+		}
+
 	}
-	else if (PlayerSelectCard == 3 && DealerCard3 == Joker) {
-		printf("승리\n");
-	}
 
+	
 }
 
+void CardPrint(int DealerCard)
+{
 
+	if (DealerCard == 1) {
+		printf("A ,\n");
+	}
+	else if (DealerCard == 11) {
+		printf("K ,\n");
+	}
+	else if (DealerCard == 12) {
+		printf("Q ,\n");
+	}
+	else if (DealerCard == 13) {
+		printf("J ,\n");
+	}
+	else if (DealerCard == 14) {
+		printf("Joker ,\n");
+	}
+	else {
+		printf("%d ,\n", DealerCard);
+	}
+}
 
+void Regame(int PlayerSelectNumber) {
+	if (PlayerSelectNumber == 1) {
+
+	}
+	else {
+
+	}
+}
