@@ -215,11 +215,6 @@ void SlotMachine()
 //10 % 의 확률로 크리티컬이 발생해 2배의 데미지를 준다.
 //상대방의 HP가 0 이하가 되면 승리한다.
 
-void weekendPra9()
-{
-	TurnBattle();
-}
-
 void TurnBattle()
 {
 	srand(time(0));
