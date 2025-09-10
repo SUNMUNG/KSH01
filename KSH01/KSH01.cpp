@@ -62,13 +62,21 @@ int main() {
 	//
 	//practice09103();
 	//
-	practice09104();
+	//practice09104();
 	//
 	//practice09105();
 	//
 	//practice09106();
 	//
 	//practice09107();
+
+	//practice09108();
+
+	//practice09109();
+
+	//practice091010();
+
+	practice091011();
 }
 
 

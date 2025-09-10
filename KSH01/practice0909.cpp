@@ -5,6 +5,7 @@
 #include <random>
 #include <string>
 #include <limits.h>
+#include "practice0910.h"
 
 void practice09091()
 {
@@ -587,6 +588,8 @@ void Miro3()
 		else isBottom = false;
 	}
 }
+
+
 
 
 

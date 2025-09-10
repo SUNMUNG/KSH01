@@ -27,3 +27,20 @@ int MyAtoI(const char* Source);
 void practice09107();
 
 float MyAtoF(const char* Source);
+
+void practice09108();
+
+void practice09109();
+
+void ReadFile();
+
+void practice091010();
+
+void Miro3();
+
+void practice091011();
+
+void Miro4();
+
+void ReadMap();
+
