@@ -12,6 +12,7 @@
 #include "0906weekendPra.h"
 #include "practice_0908.h"
 #include "practice0909.h"
+#include "practice0910.h"
 
 
 int main() {
@@ -53,8 +54,21 @@ int main() {
 	//practice09094();
 	//practice09095();
 	//practice09096();
-	practice09097();
+	//practice09097();
 
+	//practice09101();
+	//
+	//practice09102();
+	//
+	//practice09103();
+	//
+	practice09104();
+	//
+	//practice09105();
+	//
+	//practice09106();
+	//
+	//practice09107();
 }
 
 

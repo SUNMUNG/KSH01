@@ -29,3 +29,4 @@ void Miro2();
 void Battle(int,int);
 
 void Miro3();
+
