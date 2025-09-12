@@ -1,7 +1,6 @@
 ﻿#define _CRTDBG_MAP_ALLOC
 #define new new(_NORMAL_BLOCK,__FILE__,__LINE__)
 #include <crtdbg.h>
-
 #include <stdio.h>
 #include <cstring>
 #include <random>
@@ -12,13 +11,16 @@
 #include "0906weekendPra.h"
 #include "practice_0908.h"
 #include "practice0909.h"
+#include "practice0911.h"
 #include "practice0910.h"
+#include "practice0912.h"
+#include "weekendpra0912.h"
 
 
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
+	srand(time(0));
 	//practice_0905_1();
 	//practice_0905_2();
 	//practice_0905_3();
@@ -76,7 +78,17 @@ int main() {
 
 	//practice091010();
 
-	practice091011();
+	//practice091011();
+	// 
+	//practice09111();
+
+	//practice09121();
+	//practice09122();
+	//practice09123();
+	//practice09124();
+
+
+	weekendpra09121();
 }
 
 

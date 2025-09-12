@@ -301,12 +301,13 @@ void Miro2()
 	
 	int& PHP = PlayerHealthPoint;
 	int& EHP = EnemyHealthPoint;
-
+	Player player;
+	Enemy2 enemy;
 
 	const int MazeHeight = 10;
 	const int MazeWidth = 20;
-	int PlayerPosX = 1;
-	int PlayerPosY = 1;
+	/*int PlayerPosX = 1;
+	int PlayerPosY = 1;*/
 	int EndPosX = 18;
 	int EndPosY = 7;
 	char PlayerMove;
@@ -330,7 +331,7 @@ void Miro2()
 
 
 	//현재상황 미로 출력
-	while (Maze[PlayerPosY][PlayerPosX] != Maze[EndPosY][EndPosX]) {
+	while (Maze[player.Ypos][player.Xpos] != Maze[EndPosY][EndPosX]) {
 
 		for (int i = 0; i < MazeHeight; i++) {
 			for (int j = 0; j < MazeWidth; j++) {
@@ -357,25 +358,26 @@ void Miro2()
 		}
 		//20%확률로 전투
 		if ((isBattle == 5) ||(isBattle == 9) ) {
-			Battle(PlayerHealthPoint, EnemyHealthPoint);
+			Battle(&player);
 		}
 		else if (isBattle == 3) {
-			PlayerHealthPoint += 100;
+			printf("체력이 회복되었습니다 . 10%\n");
+			player.PlayerHp+= 10;
 		}
 
 		//이동가능 방향 출력
 		printf("w(W): 위, s(S): 아래, a(A): 왼쪽, d(D): 오른쪽\n");
 		printf("이동 가능한 방향 : ");
-		if (Maze[PlayerPosY + 1][PlayerPosX] == 0) {
+		if (Maze[player.Ypos + 1][player.Xpos] == 0) {
 			printf("s(S): 아래, ");
 		}
-		if (Maze[PlayerPosY - 1][PlayerPosX] == 0) {
+		if (Maze[player.Ypos - 1][player.Xpos] == 0) {
 			printf("w(W): 위, ");
 		}
-		if (Maze[PlayerPosY][PlayerPosX - 1] == 0) {
+		if (Maze[player.Ypos][player.Xpos - 1] == 0) {
 			printf("a(A): 왼쪽, ");
 		}
-		if (Maze[PlayerPosY][PlayerPosX + 1] == 0) {
+		if (Maze[player.Ypos][player.Xpos + 1] == 0) {
 			printf("d(D): 오른쪽 ");
 		}
 
@@ -385,46 +387,46 @@ void Miro2()
 
 		//벽 판단 로직 없으면 좌표이동
 		if (PlayerMove == 'W' || PlayerMove == 'w') {
-			if (Maze[PlayerPosY - 1][PlayerPosX] == 1) {
+			if (Maze[player.Ypos - 1][player.Xpos] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[PlayerPosY][PlayerPosX] = 0;
-				PlayerPosY -= 1;
+				Maze[player.Ypos][player.Xpos] = 0;
+				player.Ypos -= 1;
 			}
 		}
 		else if (PlayerMove == 'S' || PlayerMove == 's') {
-			if (Maze[PlayerPosY + 1][PlayerPosX] == 1) {
+			if (Maze[player.Ypos + 1][player.Xpos] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[PlayerPosY][PlayerPosX] = 0;
-				PlayerPosY += 1;
+				Maze[player.Ypos][player.Xpos] = 0;
+				player.Ypos += 1;
 			}
 		}
 		else if (PlayerMove == 'A' || PlayerMove == 'a') {
-			if (Maze[PlayerPosY][PlayerPosX - 1] == 1) {
+			if (Maze[player.Ypos][player.Xpos - 1] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[PlayerPosY][PlayerPosX] = 0;
-				PlayerPosX -= 1;
+				Maze[player.Ypos][player.Xpos] = 0;
+				player.Xpos -= 1;
 			}
 		}
 		else if (PlayerMove == 'D' || PlayerMove == 'd') {
-			if (Maze[PlayerPosY][PlayerPosX + 1] == 1) {
+			if (Maze[player.Ypos][player.Xpos + 1] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[PlayerPosY][PlayerPosX] = 0;
-				PlayerPosX += 1;
+				Maze[player.Ypos][player.Xpos] = 0;
+				player.Xpos += 1;
 			}
 		}
 		else {
 			printf("다른키를 입력하였습니다.\n");
 		}
 		//이동한 좌표로 플레이어 이동
-		Maze[PlayerPosY][PlayerPosX] = 4; //4 가 플레이어
+		Maze[player.Ypos][player.Xpos] = 4; //4 가 플레이어
 	}
 
 
@@ -455,24 +457,30 @@ void Miro2()
 	printf("출구에 도착하였습니다.\n");
 }
 
-void Battle(int PlayerHp,int EnemyHp)
+void Battle(Player* player)
 {
 	srand(time(0));
-	int PlayerHealth = PlayerHp;
-	int EnemyHealth = EnemyHp;
+	Enemy2* enemy2 = new Enemy2();
+	RandomEnemyStatus(enemy2);
+
+	int PlayerHealth = player->PlayerHp;
+	int EnemyHealth = enemy2->EnemyHp;
 	int PlayerDamage;
-	int EnemyDamage;
+	int EnemyDamage=rand()%enemy2->Attack+1;
 	int PlayercritRate; // 0~9까지 굴려서 10개의 숫자 중 5면 1/10
 	int EnemycritRate; // 0~9까지 굴려서 10개의 숫자 중 5면 1/10
 	printf("턴제 전투 게임을 시작합니다.\n");
-	printf("현재 나의 체력 : %d\n", PlayerHealth);
-	printf("현재 적의 체력 : %d\n", EnemyHealth);
 
-	printf("전투를 시작합니다. 엔터를 누르면 시작.\n");
-	getchar();
+	while (PlayerHealth > 0 || EnemyHealth > 0) {
+		printf("현재 나의 체력 : %d\n", PlayerHealth);
+		printf("현재 적의 체력 : %d\n", EnemyHealth);
 
+		printf("전투를 시작합니다. 엔터를 누르면 시작.\n");
+		getchar();
+		
+
+		EnemyDamage = rand() % enemy2->Attack + 1;
 		PlayerDamage = rand() % 11 + 5;
-		EnemyDamage = rand() % 11 + 5;
 		PlayercritRate = rand() % 10;
 		EnemycritRate = rand() % 10;
 
@@ -493,13 +501,18 @@ void Battle(int PlayerHp,int EnemyHp)
 		printf("적 에게 %d 의 데미지를 주었습니다.\n", PlayerDamage);
 		printf("적의 남은 HP : %d\n플레이어 남은 HP : %d\n", EnemyHealth, PlayerHealth);
 		printf("계속하려면 엔터\n");
+
 		getchar();
 
 		if (PlayerHealth <= 0) {
-			printf("플레이어가 패배했습니다.\n");		
+			printf("플레이어가 패배했습니다.\n");
+			break;
 		}
 		else if (EnemyHealth <= 0) {
-			printf("플레이어가 승리했습니다.\n");	
+			printf("플레이어가 승리했습니다.\n");
+			player->reward += enemy2->Reward;
+			printf("보상 : %d\n현재 보유한 보상 : %d\n", enemy2->Reward,player->reward);
+			break;
 		}
 
 
@@ -521,17 +534,29 @@ void Battle(int PlayerHp,int EnemyHp)
 
 		if (PlayerHealth <= 0) {
 			printf("플레이어가 패배했습니다.\n");
-		
+			break;
+
 		}
 		else if (EnemyHealth <= 0) {
 			printf("플레이어가 승리했습니다.\n");
-		
+			player->reward += enemy2->Reward;
+			printf("보상 : %d\n현재 보유한 보상 : %d\n", enemy2->Reward, player->reward);
+			break;
+
 		}
 
 
-		PlayerHealthPoint = PlayerHealth;
-		EnemyHealthPoint = EnemyHealth;
+		player->PlayerHp = PlayerHealth;
+		enemy2->EnemyHp = EnemyHealth;
+	}
+	
 
+}
+void RandomEnemyStatus(Enemy2* enemy2)
+{
+	enemy2->EnemyHp = rand() % 50 + 1;
+	enemy2->Attack = rand() % 15 + 1;
+	enemy2->Reward = rand() % 3;
 }
 
 void Miro3()
@@ -588,6 +613,8 @@ void Miro3()
 		else isBottom = false;
 	}
 }
+
+
 
 
 

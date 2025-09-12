@@ -44,3 +44,4 @@ void Miro4();
 
 void ReadMap();
 
+int FindCharIndex(const char* TargetString, const char TargetCharacter);

@@ -26,7 +26,23 @@ void practice09097();
 
 void Miro2();
 
-void Battle(int,int);
+struct Player
+{
+	int PlayerHp = 100;
+	int Xpos = 1;
+	int Ypos = 1;
+	int reward = 0;
+
+};
+struct Enemy2
+{
+	int EnemyHp = 100;
+	int Attack = 1;
+	int Reward = 0;
+};
+
+void Battle(Player* player);
 
 void Miro3();
 
+void RandomEnemyStatus(Enemy2* enemy);

@@ -36,6 +36,15 @@
     <ClCompile Include="practice0910.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="practice0911.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="practice0912.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="weekendpra0912.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -54,6 +63,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="practice0910.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="practice0911.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="practice0912.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="weekendpra0912.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

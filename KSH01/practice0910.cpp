@@ -26,9 +26,28 @@ void isFindChar(char* HelloStr, int c)
 			printf("해당하는 문자가 있습니다.\n");
 			printf("%d 번째 에 있습니다.\n", number);
 		}
-
 		number++;
 	}
+}
+int FindCharIndex(const char* TargetString, const char TargetCharacter)
+{
+	int Index = 0;
+	bool IsFind = false;
+	while (TargetString[Index] != '\0')
+	{
+		if (TargetString[Index] == TargetCharacter)
+		{
+			IsFind = true;
+			break;
+		}
+		Index++;
+	}
+
+	if (!IsFind)
+	{
+		Index = -1;
+	}
+	return Index;
 }
 
 //문자열의 길이를 측정하는 함수 만들기
