@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="몬스터">
+      <UniqueIdentifier>{87de5a45-8e48-4847-8540-986b54f6c31d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동물">
+      <UniqueIdentifier>{af80665e-780f-4d23-8d2e-c0ec1ec5e7d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="미로">
+      <UniqueIdentifier>{da32edb5-eb43-4e93-9b58-5adde38f9cf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KSH01.cpp">
@@ -36,9 +45,6 @@
     <ClCompile Include="practice0910.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="practice0911.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="practice0912.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -51,10 +57,46 @@
     <ClCompile Include="practice0916.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Animal.cpp">
+      <Filter>동물</Filter>
+    </ClCompile>
+    <ClCompile Include="Tiger.cpp">
+      <Filter>동물</Filter>
+    </ClCompile>
+    <ClCompile Include="Eagle.cpp">
+      <Filter>동물</Filter>
+    </ClCompile>
+    <ClCompile Include="Whale.cpp">
+      <Filter>동물</Filter>
+    </ClCompile>
+    <ClCompile Include="Horse.cpp">
+      <Filter>동물</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Oak.cpp">
+      <Filter>몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>몬스터</Filter>
+    </ClCompile>
     <ClCompile Include="Car.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Animal.cpp">
+    <ClCompile Include="practice0911.cpp">
+      <Filter>미로</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,9 +119,6 @@
     <ClInclude Include="practice0910.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="practice0911.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="practice0912.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -95,7 +134,43 @@
     <ClInclude Include="Car.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Tiger.h">
+      <Filter>동물</Filter>
+    </ClInclude>
     <ClInclude Include="Animal.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="Eagle.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="Whale.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Horse.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Oak.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="practice0911.h">
+      <Filter>미로</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

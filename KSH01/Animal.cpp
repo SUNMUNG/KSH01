@@ -1,7 +1,13 @@
 #include "Animal.h"
 #include <stdio.h>
 
-Animal::Animal(const char* inname, float inEnergy, int inage)
+Animal::Animal(std::string inname)
+	:name(inname)
+{
+	printf("%s : 동물이 생성되었습니다.\n", name.c_str());
+}
+
+Animal::Animal(std::string inname, float inEnergy, int inage)
 	:name(inname),Energy(inEnergy),age(inage)
 {
 	printf("%s : 동물이 생성되었습니다.\n",name.c_str());
@@ -23,7 +29,7 @@ void Animal::Move()
 	}
 	else {
 		printf("%s : 동물이 움직였습니다.\n", name.c_str());
-		Energy -= 0.1f;
+		SetEnergy(Energy - 0.1f);
 		printf("에너지를 소비했습니다 : %.0f\n", Energy * 100);
 	}
 	
@@ -40,10 +46,7 @@ void Animal::Eat()
 {
 	
 	printf("%s : 동물이 음식을 먹었습니다.\n",name.c_str());
-	Energy += 0.3f;
-	if (Energy > 1.0f) {
-		Energy = 1.0f;
-	}
+	SetEnergy(Energy + 0.3f);
 	printf("에너지가 회복되었습니다 : %.0f\n",Energy * 100);
 	printf("----------------------------\n");
 }
@@ -51,8 +54,8 @@ void Animal::Eat()
 void Animal::Sleep()
 {
 	printf("%s : 동물이 잠을 잤습니다.\n",name.c_str());
-	age += 1;
-	Energy = 1.0f;
+	SetAge(age + 1);
+	SetEnergy(1.0f);
 	printf("나이가 증가했습니다. : %d\n", age);
 	printf("에너지가 전부 회복되었습니다. : %.0f\n",Energy * 100);
 	printf("----------------------------\n");

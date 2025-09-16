@@ -92,11 +92,19 @@ int main() {
 	//weekendpra09121();
 	//weekendpra09122();
 
-	Practice0916 pra0916;
-	pra0916.ClassInstance();
+	/*Practice0916 pra0916;
+	pra0916.ClassInstance();*/
+
 }
 
 
 
+//적을 클래스화하기(Monster로 대체)
+//플레이어 클래스 만들고 적용하기
+//적과 플레이어의 부모인 Actor 클래스 만들기
 
- 
+//9 / 16 심화문제
+//전투 이벤트 시 적이 랜덤한 몬스터 중 하나가 등장한다.
+//GameManager 클래스 만들기
+//미로 관련 데이터 생성 / 관리
+//게임 진행 함수 만들기

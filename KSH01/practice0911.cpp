@@ -10,6 +10,12 @@
 #include "practice0911.h"
 #include "practice0910.h"
 #include "practice0909.h"
+#include "Monster.h"
+#include "Zombie.h"
+#include "Skeleton.h"
+#include "Goblin.h"
+#include "Oak.h"
+#include "Player.h"
 
 int MazeHeight = 10;
 int MazeWidth = 20;
@@ -185,8 +191,8 @@ void PrintMaze(int PlayerX, int PlayerY)
 void MiroEscape()
 {
 	// 미로 크기
-	Player player;
-	Enemy2 enemy;
+	//Player player; 
+	Player player = Player("플레이어", 100, 20);
 	const int MazeHeight = 10;
 	const int MazeWidth = 20;
 	int PlayerPosX = 1;
@@ -198,24 +204,24 @@ void MiroEscape()
 	
 	
 	//현재상황 미로 출력
-	while (Maze[player.Ypos][player.Xpos] != Maze[EndPosY][EndPosX]) {
+	while (Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] != Maze[EndPosY][EndPosX]) {
 
 		isBattle = rand() % 10;
-		PrintMaze(player.Xpos, player.Ypos);
+		PrintMaze(player.GetPlayerXPos(), player.GetPlayerYPos());
 
 		//이동가능 방향 출력
 		printf("w(W): 위, s(S): 아래, a(A): 왼쪽, d(D): 오른쪽\n");
 		printf("이동 가능한 방향 : ");
-		if (Maze[player.Ypos + 1][player.Xpos] == 0) {
+		if (Maze[player.GetPlayerYPos() + 1][player.GetPlayerXPos()] == 0) {
 			printf("s(S): 아래, ");
 		}
-		if (Maze[player.Ypos - 1][player.Xpos] == 0) {
+		if (Maze[player.GetPlayerYPos() - 1][player.GetPlayerXPos()] == 0) {
 			printf("w(W): 위, ");
 		}
-		if (Maze[player.Ypos][player.Xpos - 1] == 0) {
+		if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos() - 1] == 0) {
 			printf("a(A): 왼쪽, ");
 		}
-		if (Maze[player.Ypos][player.Xpos + 1] == 0) {
+		if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos() + 1] == 0) {
 			printf("d(D): 오른쪽 ");
 		}
 
@@ -224,58 +230,62 @@ void MiroEscape()
 
 		//벽 판단 로직 없으면 좌표이동
 		if (PlayerMove == 'W' || PlayerMove == 'w') {
-			if (Maze[player.Ypos - 1][player.Xpos] == 1) {
+			if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[player.Ypos][player.Xpos] = 0;
-				player.Ypos -= 1;
+				Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 0;
+				player.SetPlayerPosXY(0, -1);
+				//player.Ypos -= 1;
 			}
 		}
 		else if (PlayerMove == 'S' || PlayerMove == 's') {
-			if (Maze[player.Ypos + 1][player.Xpos] == 1) {
+			if (Maze[player.GetPlayerYPos() + 1][player.GetPlayerXPos()] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[player.Ypos][player.Xpos] = 0;
-				player.Ypos += 1;
+				Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 0;
+				player.SetPlayerPosXY(0, +1);
+				//player.Ypos += 1;
 			}
 		}
 		else if (PlayerMove == 'A' || PlayerMove == 'a') {
-			if (Maze[player.Ypos][player.Xpos - 1] == 1) {
+			if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos() - 1] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[player.Ypos][player.Xpos] = 0;
-				player.Xpos -= 1;
+				Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 0;
+				player.SetPlayerPosXY(-1, 0);
+				//player.Xpos -= 1;
 			}
 		}
 		else if (PlayerMove == 'D' || PlayerMove == 'd') {
-			if (Maze[player.Ypos][player.Xpos + 1] == 1) {
+			if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos() + 1] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
-				Maze[player.Ypos][player.Xpos] = 0;
-				player.Xpos += 1;
+				Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 0;
+				player.SetPlayerPosXY(+1, 0);
+				//player.Xpos += 1;
 			}
 		}
 		else {
 			printf("다른키를 입력하였습니다.\n");
 		}
 		//이동한 좌표로 플레이어 이동
-		Maze[player.Ypos][player.Xpos] = 4; 
-		if (player.reward > 0) {
+		Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 4;
+		if (player.GetPlayerCoin() > 100) {
 			printf("보유한 보상을 사용하여 체력을 회복했습니다. +10\n");
-			player.PlayerHp += 10;
-			printf("현재 HP : %d\n", player.PlayerHp);
-			player.reward--;
+			player.SetPlayerHealth(10);
+			printf("현재 HP : %d\n", player.GetPlayerHP());
+			player.SetPlayerCoin(-100);
 		}
 		//4 가 플레이어
 
 		if (isBattle == 5 || isBattle == 3) {
 			Battle(&player);
 		}
-		printf("플레이어 현재 체력 : %d\n",player.PlayerHp);
+		printf("플레이어 현재 체력 : %d\n",player.GetPlayerHP());
 
 	}
 

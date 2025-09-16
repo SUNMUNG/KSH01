@@ -124,9 +124,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="0906weekendPra.cpp" />
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Eagle.cpp" />
+    <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Horse.cpp" />
     <ClCompile Include="KSH01.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Oak.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="practice0909.cpp" />
     <ClCompile Include="practice0910.cpp" />
     <ClCompile Include="practice0911.cpp" />
@@ -135,13 +142,24 @@
     <ClCompile Include="practice0916.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="practice_0908.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="Tiger.cpp" />
     <ClCompile Include="weekendpra0912.cpp" />
+    <ClCompile Include="Whale.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0906weekendPra.h" />
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Eagle.h" />
+    <ClInclude Include="Goblin.h" />
+    <ClInclude Include="Horse.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Oak.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="practice0909.h" />
     <ClInclude Include="practice0910.h" />
     <ClInclude Include="practice0911.h" />
@@ -150,8 +168,12 @@
     <ClInclude Include="practice0916.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="practice_0908.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="Tiger.h" />
     <ClInclude Include="weekendpra0912.h" />
+    <ClInclude Include="Whale.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
