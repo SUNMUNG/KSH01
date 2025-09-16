@@ -15,6 +15,7 @@
 #include "practice0910.h"
 #include "practice0912.h"
 #include "weekendpra0912.h"
+#include "practice0916.h"
 
 
 int main() {
@@ -88,8 +89,11 @@ int main() {
 	//practice09124();
 
 
-	weekendpra09121();
+	//weekendpra09121();
 	//weekendpra09122();
+
+	Practice0916 pra0916;
+	pra0916.ClassInstance();
 }
 
 

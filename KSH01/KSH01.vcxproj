@@ -124,12 +124,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="0906weekendPra.cpp" />
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="KSH01.cpp" />
     <ClCompile Include="practice0909.cpp" />
     <ClCompile Include="practice0910.cpp" />
     <ClCompile Include="practice0911.cpp" />
     <ClCompile Include="practice0912.cpp" />
     <ClCompile Include="practice0915.cpp" />
+    <ClCompile Include="practice0916.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="practice_0908.cpp" />
     <ClCompile Include="test.cpp" />
@@ -137,11 +140,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0906weekendPra.h" />
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="practice0909.h" />
     <ClInclude Include="practice0910.h" />
     <ClInclude Include="practice0911.h" />
     <ClInclude Include="practice0912.h" />
     <ClInclude Include="practice0915.h" />
+    <ClInclude Include="practice0916.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="practice_0908.h" />
     <ClInclude Include="test.h" />
