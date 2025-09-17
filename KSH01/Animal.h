@@ -9,12 +9,13 @@ public:
 
 	Animal(std::string inname,float inEnergy,int inage);
 	Animal(std::string inname);
-	~Animal();
-	void Move();
-	void MakeSound();
+	Animal()=default;
+	virtual void Move()=0;
+	virtual void MakeSound();
 	void Eat();
 	void Sleep();
 	void ShowInfo();
+	virtual ~Animal();
 protected:
 	inline void SetEnergy(float inEnergy)
 	{

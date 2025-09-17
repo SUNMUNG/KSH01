@@ -230,7 +230,7 @@ void MiroEscape()
 
 		//벽 판단 로직 없으면 좌표이동
 		if (PlayerMove == 'W' || PlayerMove == 'w') {
-			if (Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] == 1) {
+			if (Maze[player.GetPlayerYPos()-1][player.GetPlayerXPos()] == 1) {
 				printf("이동할수 없습니다.\n");
 			}
 			else {
@@ -285,7 +285,11 @@ void MiroEscape()
 		if (isBattle == 5 || isBattle == 3) {
 			Battle(&player);
 		}
-		printf("플레이어 현재 체력 : %d\n",player.GetPlayerHP());
+		printf("플레이어 현재 체력 : %d\n",player.GetHP());
+		if (player.GetHP() <= 0) {
+			printf("플레이어가 사망했습니다.\n");
+			return;
+		}
 
 	}
 

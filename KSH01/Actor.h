@@ -1,6 +1,7 @@
 #pragma once
+#include "IBattle.h"
 #include <string>
-class Actor
+class Actor : public IBattle
 {
 public:
 	inline const std::string GetName() const { return Name; }
@@ -11,10 +12,11 @@ public:
 
 	Actor(std::string inName, int inHp, int inAtk);
 	Actor();
-	~Actor();
+	virtual ~Actor();
 
-	void AttackDamage(Actor* Target);
-	void TakeDamage(int inDamage);
+	virtual void AttackDamage(IBattle* Target);
+	virtual void SkillAttack(IBattle* Target)=0;
+	virtual void TakeDamage(int inDamage);
 	int CoinReward();
 
 protected:

@@ -3,7 +3,12 @@
 void Oak::Giant()
 {
 	Health *= 1.5f;
-	printf("오크가 몸집이 커졌습니다. : HP : %d \n",Health);
+	printf("%s가 몸집이 커졌습니다. : HP : %d \n",this->Name.c_str(), Health);
+}
+
+void Oak::SkillAttack(IBattle* Target)
+{
+	Giant();
 }
 
 Oak::Oak(std::string inName, int inHp, int inAtk)

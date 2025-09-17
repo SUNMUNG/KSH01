@@ -15,12 +15,18 @@ Actor::~Actor()
 {
 }
 
-void Actor::AttackDamage(Actor* Target)
+void Actor::AttackDamage(IBattle* Target)
 {
-	int Damage=0;
+	int Damage = 0;
+	int SkillChance = rand()%10;
 	Damage = rand() % this->Atk + 1;
-
-	Target->TakeDamage(Damage);
+	if (this->Name != "플레이어" && SkillChance <= 3) {
+		SkillAttack(Target);
+	}
+	else {
+		Target->TakeDamage(Damage);
+	}
+	
 	
 }
 

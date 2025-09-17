@@ -465,45 +465,35 @@ void Miro2()
 void Battle(Player* player)
 {
 	srand(time(0));
-	/*int RandMob = rand() % 4;
-	switch (RandMob) {
-		case 0:	Zombie * monster = new Zombie("좀비", 20, 10);
-			break;
-		case 1:	Oak* monster =new Oak("오크", 40, 7);
-			break;
-		case 2:	Skeleton* monster =new Skeleton("스켈레톤", 10, 15);
-			break;
-		case 3: Goblin* monster =new Goblin("고블린", 10, 10);
-			break;
-		default: Monster* monster = new Monster("몬스터", 30, 10);
-			break;
-	}*/
-	Monster* monster = new Monster("몬스터", 30, 10);
+	int RandMob = rand() % 4;
+	Monster* monster[4];
 	
+	monster[0] = new Zombie("좀비",30,10);
+	monster[1] = new Skeleton("스켈레톤",20,15);
+	monster[2] = new Oak("오크",30,7);
+	monster[3] = new Goblin("고블린",15,10);
 
-	/*int PlayerHealth = player->GetHP();
-	int EnemyHealth = monster->GetHP();
-	int PlayerDamage;
-	int EnemyDamage;*/
 	int PlayercritRate; // 0~9까지 굴려서 10개의 숫자 중 5면 1/10
 	int EnemycritRate; // 0~9까지 굴려서 10개의 숫자 중 5면 1/10
 	printf("턴제 전투 게임을 시작합니다.\n");
-
-	while (player->GetHP() > 0 && monster->GetHP() > 0) {
+	printf("%s 이(가)나타났습니다.\n", monster[RandMob]->GetName().c_str());
+	while (player->GetHP() > 0 && monster[RandMob]->GetHP() > 0) {
 		printf("현재 나의 체력 : %d\n", player->GetHP());
-		printf("현재 적의 체력 : %d\n", monster->GetHP());
+		printf("현재 적의 체력 : %d\n", monster[RandMob]->GetHP());
 
 		printf("전투를 시작합니다. 엔터를 누르면 시작.\n");
 		getchar();
 		
-		player->AttackDamage(monster);
+		monster[RandMob]->AttackDamage(player);
+		getchar();
 		if (player->GetHP() <= 0) {
-			printf("플레이어가 사망했습니다\n");
+			printf("%s가 사망했습니다\n",player->GetName().c_str());
 			break;
 		}
-		monster->AttackDamage(player);
-		if (monster->GetHP() <= 0) {
-			printf("몬스터가 사망했습니다\n");
+		player->AttackDamage(monster[RandMob]);
+		getchar();
+		if (monster[RandMob]->GetHP() <= 0) {
+			printf("%s이(가) 사망했습니다\n",monster[RandMob]->GetName().c_str());
 			break;
 		}
 
@@ -579,8 +569,12 @@ void Battle(Player* player)
 		
 	}
 	
-	delete monster;
-	monster = nullptr;
+	for (int i = 0; i < 4; i++) {
+		delete monster[i];
+		monster[i] = nullptr;
+	}
+
+	
 }
 
 

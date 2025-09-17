@@ -22,6 +22,9 @@
     <Filter Include="미로">
       <UniqueIdentifier>{da32edb5-eb43-4e93-9b58-5adde38f9cf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="모양">
+      <UniqueIdentifier>{29814158-e593-4aab-a9af-bdb23ebf8f06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KSH01.cpp">
@@ -78,9 +81,6 @@
     <ClCompile Include="Oak.cpp">
       <Filter>몬스터</Filter>
     </ClCompile>
-    <ClCompile Include="Goblin.cpp">
-      <Filter>몬스터</Filter>
-    </ClCompile>
     <ClCompile Include="Skeleton.cpp">
       <Filter>몬스터</Filter>
     </ClCompile>
@@ -96,8 +96,17 @@
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
+    <ClCompile Include="practice0917.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>모양</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>몬스터</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,8 +179,23 @@
     <ClInclude Include="Player.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
+    <ClInclude Include="practice0917.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>모양</Filter>
+    </ClInclude>
+    <ClInclude Include="IFlyable.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="ISwimable.h">
+      <Filter>동물</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="IBattle.h">
+      <Filter>몬스터</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

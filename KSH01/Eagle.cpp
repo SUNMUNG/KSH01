@@ -6,3 +6,14 @@ void Eagle::Fly()
 	SetEnergy(Energy - 0.3f);
 	printf("----------------------------\n");
 }
+
+void Eagle::Move() {
+	//Animal::Move();
+	printf("독수리가 날아다닙니다 .\n");
+}
+
+void Eagle::MakeSound()
+{
+	printf("끽\n");
+	Animal::MakeSound();
+}

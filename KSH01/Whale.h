@@ -1,9 +1,12 @@
 #pragma once
 #include "Animal.h"
-class Whale : public Animal
+#include "ISwimable.h"
+class Whale : public Animal,public ISwimable
 {
 public:
-	void Swim();
+	virtual void Swim() override;
+	virtual void MakeSound()override;
+	virtual void Move() override;
 public:
 	Whale() = default;
 	Whale(std::string inname)

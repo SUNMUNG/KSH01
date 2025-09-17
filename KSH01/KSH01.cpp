@@ -16,6 +16,7 @@
 #include "practice0912.h"
 #include "weekendpra0912.h"
 #include "practice0916.h"
+#include "practice0917.h"
 
 
 int main() {
@@ -81,7 +82,9 @@ int main() {
 
 	//practice091011();
 	// 
-	//practice09111();
+	practice09111();
+
+
 
 	//practice09121();
 	//practice09122();
@@ -94,6 +97,11 @@ int main() {
 
 	/*Practice0916 pra0916;
 	pra0916.ClassInstance();*/
+
+	//practice0917 pra0917;
+	/*pra0917.TestPolymorphism();*/
+	//pra0917.TestPractice1();
+
 
 }
 

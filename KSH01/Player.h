@@ -27,7 +27,7 @@ public:
 	}
 	Player();
 	~Player();
-
+	virtual void SkillAttack(IBattle* Target) {};
 	Player(std::string inName, int inHp, int inAtk);
 	Player(std::string inName);
 protected:

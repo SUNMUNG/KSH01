@@ -21,20 +21,20 @@ Animal::~Animal()
 	printf("----------------------------\n");
 }
 
-void Animal::Move()
-{
-	if (Energy < 0.1f) {
-		printf("%s : 동물\n", name.c_str());
-		printf("에너지가 부족해 움직일 수 없습니다. : %.0f\n", Energy * 100);
-	}
-	else {
-		printf("%s : 동물이 움직였습니다.\n", name.c_str());
-		SetEnergy(Energy - 0.1f);
-		printf("에너지를 소비했습니다 : %.0f\n", Energy * 100);
-	}
-	
-	printf("----------------------------\n");
-}
+//void Animal::Move()
+//{
+//	if (Energy < 0.1f) {
+//		printf("%s : 동물\n", name.c_str());
+//		printf("에너지가 부족해 움직일 수 없습니다. : %.0f\n", Energy * 100);
+//	}
+//	else {
+//		printf("%s : 동물이 움직였습니다.\n", name.c_str());
+//		SetEnergy(Energy - 0.1f);
+//		printf("에너지를 소비했습니다 : %.0f\n", Energy * 100);
+//	}
+//	
+//	printf("----------------------------\n");
+//}
 
 void Animal::MakeSound()
 {

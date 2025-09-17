@@ -140,8 +140,10 @@
     <ClCompile Include="practice0912.cpp" />
     <ClCompile Include="practice0915.cpp" />
     <ClCompile Include="practice0916.cpp" />
+    <ClCompile Include="practice0917.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="practice_0908.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Tiger.cpp" />
@@ -157,6 +159,9 @@
     <ClInclude Include="Eagle.h" />
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="Horse.h" />
+    <ClInclude Include="IBattle.h" />
+    <ClInclude Include="IFlyable.h" />
+    <ClInclude Include="ISwimable.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Oak.h" />
     <ClInclude Include="Player.h" />
@@ -166,8 +171,10 @@
     <ClInclude Include="practice0912.h" />
     <ClInclude Include="practice0915.h" />
     <ClInclude Include="practice0916.h" />
+    <ClInclude Include="practice0917.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="practice_0908.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="Tiger.h" />
