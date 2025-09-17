@@ -17,6 +17,7 @@
 #include "weekendpra0912.h"
 #include "practice0916.h"
 #include "practice0917.h"
+#include "GameManager.h"
 
 
 int main() {
@@ -82,7 +83,7 @@ int main() {
 
 	//practice091011();
 	// 
-	practice09111();
+	//practice09111();
 
 
 
@@ -101,6 +102,11 @@ int main() {
 	//practice0917 pra0917;
 	/*pra0917.TestPolymorphism();*/
 	//pra0917.TestPractice1();
+
+	GameManager gameManager;
+	gameManager.InitializeMaze();
+	gameManager.MazeEscape();
+	gameManager.ClearMaze();
 
 
 }

@@ -108,6 +108,9 @@
     <ClCompile Include="Actor.cpp">
       <Filter>몬스터</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>미로</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="IBattle.h">
       <Filter>몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>미로</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

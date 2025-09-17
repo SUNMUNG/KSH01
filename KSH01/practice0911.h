@@ -13,10 +13,6 @@ bool ReadMapFile(const char* MapFileName, std::string& OutDataRef);
 
 bool ParseMapData(std::string& DataString);
 
-/// <summary>
-/// </summary>
-/// <param name="Source"></param>
-/// <returns></returns>
 char* NextLine(char** InOutSource);
 
 void Parselinedata(const char* linedata, int Arraysize, int* outArray);
@@ -26,6 +22,10 @@ void ClearMaze();
 void InitializeMaze();
 
 void PrintMaze(int PlayerX, int PlayerY);
+
+
+
+
 
 //backtracking
 
