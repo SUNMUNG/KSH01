@@ -23,7 +23,7 @@ protected:
 	std::string Name;
 	int Health = 1;
 	int Atk = 1;
-	int coin = 0;
+	int coin = 100;
 
 private:
 

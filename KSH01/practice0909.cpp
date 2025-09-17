@@ -482,90 +482,21 @@ void Battle(Player* player)
 		printf("현재 적의 체력 : %d\n", monster[RandMob]->GetHP());
 
 		printf("전투를 시작합니다. 엔터를 누르면 시작.\n");
-		getchar();
-		
+	
+		player->AttackDamage(monster[RandMob]);
+
+		if (monster[RandMob]->GetHP() <= 0) {
+			printf("%s이(가) 사망했습니다\n", monster[RandMob]->GetName().c_str());
+			player->SetPlayerCoin(monster[RandMob]->GetMonsterCoin());
+			printf("현재 보유한 코인 : %d\n", player->GetCoin());
+			break;
+		}
 		monster[RandMob]->AttackDamage(player);
-		getchar();
+	
 		if (player->GetHP() <= 0) {
 			printf("%s가 사망했습니다\n",player->GetName().c_str());
 			break;
 		}
-		player->AttackDamage(monster[RandMob]);
-		getchar();
-		if (monster[RandMob]->GetHP() <= 0) {
-			printf("%s이(가) 사망했습니다\n",monster[RandMob]->GetName().c_str());
-			break;
-		}
-
-		//EnemyDamage = monster->AttackDamage();
-		//PlayerDamage = player->AttackDamage();
-		//PlayercritRate = rand() % 10;
-		//EnemycritRate = rand() % 10;
-
-
-
-		////플레이어 크리티컬 발생 유무
-		//if (PlayercritRate == 5) {
-		//	PlayerDamage *= 2;
-		//	printf("크리티컬이 발생하였습니다 : 플레이어\n");
-		//}
-
-
-		//// 체력이 음수로 떨어지는것 조정
-		//EnemyHealth -= PlayerDamage;
-		//if (EnemyHealth <= 0) {
-		//	EnemyHealth = 0;
-		//}
-		//printf("적 에게 %d 의 데미지를 주었습니다.\n", PlayerDamage);
-		//printf("적의 남은 HP : %d\n플레이어 남은 HP : %d\n", EnemyHealth, PlayerHealth);
-		//printf("계속하려면 엔터\n");
-
-		//getchar();
-
-		//if (PlayerHealth <= 0) {
-		//	printf("플레이어가 패배했습니다.\n");
-		//	break;
-		//}
-		//else if (EnemyHealth <= 0) {
-		//	printf("플레이어가 승리했습니다.\n");
-		//	player->SetPlayerCoin(monster->CoinReward());
-		//	printf("보상 : %d\n현재 보유한 코인 : %d\n", monster->CoinReward(),player->GetCoin());
-		//	break;
-		//}
-
-
-		////적 크리티컬 발생 유무
-		//if (EnemycritRate == 5) {
-		//	EnemyDamage *= 2;
-		//	printf("크리티컬이 발생하였습니다 : 플레이어\n");
-		//}
-
-		//// 체력이 음수로 떨어지는것 조정
-		//PlayerHealth -= EnemyDamage;
-		//if (PlayerHealth <= 0) {
-		//	PlayerHealth = 0;
-		//}
-		//printf("플레이어가 %d 의 데미지를 받았습니다.\n", EnemyDamage);
-		//printf("적의 남은 HP : %d\n플레이어 남은 HP : %d\n", EnemyHealth, PlayerHealth);
-		//printf("계속하려면 엔터\n");
-		//getchar();
-
-		//if (PlayerHealth <= 0) {
-		//	printf("플레이어가 패배했습니다.\n");
-		//	break;
-
-		//}
-		//else if (EnemyHealth <= 0) {
-		//	printf("플레이어가 승리했습니다.\n");
-		//	player->SetPlayerCoin(monster->GetCoin());
-		//	printf("코인 : %d\n현재 보유한 코인 : %d\n", monster->GetCoin(), player->GetCoin());
-		//	break;
-
-		//}
-
-
-		//player->SetPlayerBattleEnd(PlayerHealth);
-		
 		
 	}
 	

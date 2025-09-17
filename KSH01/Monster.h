@@ -27,7 +27,7 @@ protected:
 	inline void SetAtk(int inAtk) {
 		Atk = inAtk;
 	}
-	
+
 
 private:
 

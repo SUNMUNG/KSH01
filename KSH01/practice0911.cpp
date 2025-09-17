@@ -274,11 +274,29 @@ void MiroEscape()
 		}
 		//이동한 좌표로 플레이어 이동
 		Maze[player.GetPlayerYPos()][player.GetPlayerXPos()] = 4;
-		if (player.GetPlayerCoin() > 100) {
-			printf("보유한 보상을 사용하여 체력을 회복했습니다. +10\n");
-			player.SetPlayerHealth(10);
-			printf("현재 HP : %d\n", player.GetPlayerHP());
-			player.SetPlayerCoin(-100);
+
+		if (player.GetCoin() > 100) {
+			printf("100코인을 사용하여 회복하시겠습니까?\n1.Y 2.N\n");
+			int PlayerSelect;
+			std::cin>>PlayerSelect;
+			if (PlayerSelect > 2 || PlayerSelect <= 0) {
+				PlayerSelect = 2;
+			}
+			switch (PlayerSelect) {
+			case 1:   
+				printf("보유한 보상을 사용하여 체력을 회복했습니다. +10\n");
+				player.SetPlayerHealth(10);
+				printf("현재 HP : %d\n", player.GetPlayerHP());
+				player.SetPlayerCoin(-100);
+					break;
+			case 2:printf("계속합니다.\n");
+					break;
+				default:
+					break;
+
+			}
+
+			
 		}
 		//4 가 플레이어
 
