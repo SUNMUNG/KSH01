@@ -17,6 +17,7 @@
 #include "weekendpra0912.h"
 #include "practice0916.h"
 #include "practice0917.h"
+#include "practice0918.h"
 #include "GameManager.h"
 
 
@@ -103,11 +104,13 @@ int main() {
 	/*pra0917.TestPolymorphism();*/
 	//pra0917.TestPractice1();
 
-	GameManager gameManager;
+	/*GameManager gameManager;
 	gameManager.InitializeMaze();
 	gameManager.MazeEscape();
-	gameManager.ClearMaze();
-
+	gameManager.ClearMaze();*/
+	practice0918 pra0918;
+	//pra0918.TestSingleLinkedList();
+	pra0918.TestDoubleLinkedList();
 
 }
 

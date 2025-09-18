@@ -25,6 +25,9 @@
     <Filter Include="모양">
       <UniqueIdentifier>{29814158-e593-4aab-a9af-bdb23ebf8f06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="자료구조">
+      <UniqueIdentifier>{45c2b292-cea8-4edf-86c9-7e6b7a33aac5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KSH01.cpp">
@@ -110,6 +113,15 @@
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>미로</Filter>
+    </ClCompile>
+    <ClCompile Include="practice0918.cpp">
+      <Filter>자료구조</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>자료구조</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleLinkedList.cpp">
+      <Filter>자료구조</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>미로</Filter>
+    </ClInclude>
+    <ClInclude Include="practice0918.h">
+      <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleLinkedList.h">
+      <Filter>자료구조</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
