@@ -129,6 +129,7 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="DoubleLinkedList.cpp" />
     <ClCompile Include="Eagle.cpp" />
+    <ClCompile Include="FIxedStack.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="Horse.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="practice0916.cpp" />
     <ClCompile Include="practice0917.cpp" />
     <ClCompile Include="practice0918.cpp" />
+    <ClCompile Include="practice0919.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="practice_0908.cpp" />
     <ClCompile Include="Shape.cpp" />
@@ -162,6 +164,7 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Eagle.h" />
+    <ClInclude Include="FIxedStack.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="Horse.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="practice0916.h" />
     <ClInclude Include="practice0917.h" />
     <ClInclude Include="practice0918.h" />
+    <ClInclude Include="practice0919.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="practice_0908.h" />
     <ClInclude Include="Shape.h" />

@@ -18,6 +18,7 @@
 #include "practice0916.h"
 #include "practice0917.h"
 #include "practice0918.h"
+#include "practice0919.h"
 #include "GameManager.h"
 
 
@@ -112,6 +113,8 @@ int main() {
 	//pra0918.TestSingleLinkedList();
 	pra0918.TestDoubleLinkedList();
 
+	/*practice0919 pra0919;
+	pra0919.TestFixedStack();*/
 }
 
 

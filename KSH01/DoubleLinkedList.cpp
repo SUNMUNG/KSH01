@@ -41,33 +41,50 @@ void DoubleLinkedList::DLInsertAt(int32 Indata, uint32 Inposition)
 	}
 	DoubleListNode* InsertNode = new DoubleListNode(Indata);
 	//포지션이 0이면 헤드에 삽입
-
+	
 	if (Inposition == 0) {
 		InsertNode->Next = Head;
 		Head->Prev = InsertNode;
 		Head = InsertNode;
 	}
 	else {
-		//위의경우 모두 아닐때
-		DoubleListNode* Current = Head;
-		for (uint32 i = 1; i < Inposition; i++) {
-			Current = Current->Next;
+		//이전코드
+		//DoubleListNode* Current = Head;
+		//for (uint32 i = 1; i < Inposition; i++) {
+		//	Current = Current->Next;
+		//}
+		//InsertNode->Next = Current->Prev->Next;
+		//Current->Prev->Next = InsertNode;
+		//
+		//InsertNode->Prev = Current->Next->Prev;
+		////Current->Next->Prev = InsertNode;
+
+		//꼬리에 가까울때
+		DoubleListNode* Current;
+		if (Size / 2 < Inposition)
+		{
+			Current = Tail;
+			for (uint32 i = Size; i > Inposition; i--) {
+				Current = Current->Prev;
+			}
+		}
+		else {
+			//헤드에 가까울때
+			Current = Head;
+			for (uint32 i = 1; i < Inposition; i++) {
+				Current = Current->Next;
+			}
 		}
 		InsertNode->Next = Current->Prev->Next;
 		Current->Prev->Next = InsertNode;
 
-
 		InsertNode->Prev = Current->Next->Prev;
-		Current->Next->Prev = InsertNode;
-		
-		
-		
 
 	}
 
+	
+
 	Size++;
-
-
 }
 
 void DoubleLinkedList::DLRemove(int32 Indata)
@@ -125,8 +142,8 @@ void DoubleLinkedList::DLRemoveAt(uint32 Position)
 	}
 
 	DoubleListNode* NodeToDelete = nullptr;
-	DoubleListNode* Current = Head;
-
+	DoubleListNode* Current;
+	//삭제위치가 헤드일때
 	if (Position == 0) {
 		NodeToDelete = Head;
 		Head->Next->Prev = nullptr;
@@ -140,10 +157,19 @@ void DoubleLinkedList::DLRemoveAt(uint32 Position)
 		return;
 	}
 	else {
-
-		for (uint32 i = 1; i < Position; i++) {
-			Current = Current->Next;
+		if (Size / 2 < Position) {
+			Current = Tail;
+			for (uint32 i = Size; i > Position; i--) {
+				Current = Current->Prev;
+			}
 		}
+		else {
+			Current = Head;
+			for (uint32 i = 1; i < Position; i++) {
+				Current = Current->Next;
+			}
+		}
+		
 		NodeToDelete = Current;
 		Current->Prev->Next = Current->Next;
 		if (NodeToDelete == Tail) {
@@ -153,13 +179,27 @@ void DoubleLinkedList::DLRemoveAt(uint32 Position)
 			Current->Next->Prev = Current->Prev;
 		}
 	}
-	
+	Size--;
+	delete NodeToDelete;
+	NodeToDelete = nullptr;
 
 }
 
 DoubleListNode* DoubleLinkedList::DLSearch(int32 Indata) const
 {
-	return nullptr;
+	DoubleListNode* Result = nullptr;
+	DoubleListNode* Current = Head;
+	while (Current != nullptr) {
+		if (Current->Data == Indata) {
+			Result = Current;
+			break;
+		}
+		else {
+			Current = Current->Next;
+		}
+	}
+
+	return Result;
 }
 
 void DoubleLinkedList::DLPrintList()

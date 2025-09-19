@@ -82,6 +82,8 @@ void practice0918::TestDoubleLinkedList()
 	myDoubleList.DLPrintList();
     myDoubleList.DLInsertAt(150,2);
 	myDoubleList.DLPrintList();
+    myDoubleList.DLInsertAt(300,5);
+	myDoubleList.DLPrintList();
 	printf("RemoveAtÇÔ¼ö-----------------------------\n");
 	myDoubleList.DLRemoveAt(99);
 	myDoubleList.DLPrintList();
@@ -89,4 +91,5 @@ void practice0918::TestDoubleLinkedList()
 	myDoubleList.DLPrintList();
 	myDoubleList.DLRemoveAt(3);
 	myDoubleList.DLPrintList();
+	printf("-----------------------------\n");
 }

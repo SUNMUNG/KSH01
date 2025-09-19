@@ -123,6 +123,12 @@
     <ClCompile Include="DoubleLinkedList.cpp">
       <Filter>자료구조</Filter>
     </ClCompile>
+    <ClCompile Include="practice0919.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="FIxedStack.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -223,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="DoubleLinkedList.h">
       <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="practice0919.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="FIxedStack.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
