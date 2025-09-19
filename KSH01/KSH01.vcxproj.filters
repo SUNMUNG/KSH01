@@ -127,6 +127,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="FIxedStack.cpp">
+      <Filter>자료구조</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularQueue.cpp">
+      <Filter>자료구조</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularQueue2.cpp">
+      <Filter>자료구조</Filter>
+    </ClCompile>
+    <ClCompile Include="Weekend0920.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Battleship.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -234,6 +246,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="FIxedStack.h">
+      <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularQueue.h">
+      <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularQueue2.h">
+      <Filter>자료구조</Filter>
+    </ClInclude>
+    <ClInclude Include="Weekend0920.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Battleship.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

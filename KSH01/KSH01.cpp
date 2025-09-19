@@ -15,6 +15,7 @@
 #include "practice0910.h"
 #include "practice0912.h"
 #include "weekendpra0912.h"
+#include "weekend0920.h"
 #include "practice0916.h"
 #include "practice0917.h"
 #include "practice0918.h"
@@ -109,12 +110,21 @@ int main() {
 	gameManager.InitializeMaze();
 	gameManager.MazeEscape();
 	gameManager.ClearMaze();*/
-	practice0918 pra0918;
+	//practice0918 pra0918;
 	//pra0918.TestSingleLinkedList();
-	pra0918.TestDoubleLinkedList();
+	//pra0918.TestDoubleLinkedList();
 
-	/*practice0919 pra0919;
-	pra0919.TestFixedStack();*/
+	//practice0919 pra0919;
+
+	//pra0919.TestFixedStack();
+	//pra0919.TestCircularQueue();
+	//pra0919.TestCircularQueue2();
+
+	Weekend0920 weekend0920;
+	weekend0920.InitializeMap();
+	weekend0920.PrintMap();
+
+
 }
 
 

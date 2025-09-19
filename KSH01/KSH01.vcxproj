@@ -126,7 +126,10 @@
     <ClCompile Include="0906weekendPra.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Battleship.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="CircularQueue.cpp" />
+    <ClCompile Include="CircularQueue2.cpp" />
     <ClCompile Include="DoubleLinkedList.cpp" />
     <ClCompile Include="Eagle.cpp" />
     <ClCompile Include="FIxedStack.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Tiger.cpp" />
+    <ClCompile Include="Weekend0920.cpp" />
     <ClCompile Include="weekendpra0912.cpp" />
     <ClCompile Include="Whale.cpp" />
     <ClCompile Include="Zombie.cpp" />
@@ -161,7 +165,10 @@
     <ClInclude Include="0906weekendPra.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Animal.h" />
+    <ClInclude Include="Battleship.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="CircularQueue.h" />
+    <ClInclude Include="CircularQueue2.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Eagle.h" />
     <ClInclude Include="FIxedStack.h" />
@@ -190,6 +197,7 @@
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="Tiger.h" />
+    <ClInclude Include="Weekend0920.h" />
     <ClInclude Include="weekendpra0912.h" />
     <ClInclude Include="Whale.h" />
     <ClInclude Include="Zombie.h" />
