@@ -27,20 +27,31 @@ void Weekend0920::InitializeMap()
 void Weekend0920::DecidePos(Battleship inship)
 {
 	bool isDecide = false;
+	int Angle = -1;
+	enum CanXY
+	{
+		XPlus,
+		XMinus,
+		YPlus,
+		YMinus,
+		cant
+	};
 	do
 	{
 		inship.PosX = rand() % MapWidth;
 		inship.PosY = rand() % MapHeight;
 		
+		//int Angle = rand() % 2;
 
-		if (canPlace(inship.PosX, inship.PosY, inship.Size) == true) {
-			//함선배치
-			PlaceShip(inship);
-			isDecide = true;
-		}
-		else {
+		Angle = canPlace(inship.PosX, inship.PosY, inship.Size);//어느방향이 가능한지
+		if (Angle == cant) {
 			isDecide = false;
 		}
+		else {
+			PlaceShip(inship, Angle);
+			isDecide = true;
+		}
+		
 
 		/*if (Angle == 0) {
 			if (inship.PosX + inship.Size >= MapWidth && inship.PosX - inship.Size < 0) {
@@ -113,98 +124,129 @@ void Weekend0920::DecidePos(Battleship inship)
 	
 }
 
-void Weekend0920::PlaceShip(Battleship inship)
+void Weekend0920::PlaceShip(Battleship inship,int angle)
 {
-	bool abc = true;
-	for (int i = 0; i < inship.Size; i++) {
-		if (Map[inship.PosY][inship.PosX - i] == 1 && Map[inship.PosY][inship.PosX + i] == 1) {
-			abc = false;
-		}
-	}
+	enum CanXY
+	{
+		XPlus,
+		XMinus,
+		YPlus,
+		YMinus,
+		cant
+	};
 
-	if (abc) {
-		//배치
-		if (PosXCan(inship)) {
-			for (int i = 0; i < inship.Size; i++) {
-				Map[inship.PosY][inship.PosX + i] = 1;
-			}
-		
-		}
-		else {
-			for (int i = 0; i < inship.Size; i++) {
-				Map[inship.PosY][inship.PosX - i] = 1;
-			}
-		
-		}
-	}
-	else{
+	if (angle== XPlus) {
 		for (int i = 0; i < inship.Size; i++) {
-			if (Map[inship.PosY - i][inship.PosX] == 1 && Map[inship.PosY + i][inship.PosX] == 1) {
-				abc = false;
-			}
+			Map[inship.PosY][inship.PosX+i] = 1;
 		}
-			
-		//배치
-		if (PosYCan(inship)) {
-			for (int i = 0; i < inship.Size; i++) {
-				Map[inship.PosY + i][inship.PosX] = 1;
-			}
+	}
+	else if (angle == XMinus) {
+		for (int i = 0; i < inship.Size; i++) {
+			Map[inship.PosY][inship.PosX-i] = 1;
 		}
-		else {
-			for (int i = 0; i < inship.Size; i++) {
-				Map[inship.PosY - i][inship.PosX] = 1;
-			}
+	}
+	else if (angle == YPlus) {
+		for (int i = 0; i < inship.Size; i++) {
+			Map[inship.PosY+i][inship.PosX] = 1;
 		}
-
-		
+	}
+	else if (angle == YMinus) {
+		for (int i = 0; i < inship.Size; i++) {
+			Map[inship.PosY - i][inship.PosX] = 1;
+		}
 	}
 	
-		
-			
+}
 
+
+int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
+{
+	bool isPlacedXPlus = true;
+	bool isPlacedXMinus = true;
+	bool isPlacedYPlus = true;
+	bool isPlacedYMinus = true;
+
+	enum CanXY
+	{
+		XPlus,
+		XMinus,
+		YPlus,
+		YMinus,
+		cant
+	};
+	if (inposY + shipSize >= MapHeight) {
+		isPlacedYPlus = false;
+	}
+	if (inposY - shipSize < 0) {
+		isPlacedYMinus = false;
+	}
+	if (inposX + shipSize >= MapWidth) {
+		isPlacedXPlus = false;
+	}
+	if (inposX - shipSize < 0) {
+		isPlacedXMinus = false;
+	}
+
+	if (isPlacedYMinus) {
+		for (int i = 0; i < shipSize; i++) {
+			if (Map[inposY - i][inposX] == 1) {
+				isPlacedYMinus = false;
+			}
+		}
+	}
+	
+	if (isPlacedYPlus) {
+		for (int i = 0; i < shipSize; i++) {
+			if (Map[inposY + i][inposX] == 1) {
+				isPlacedYPlus = false;
+			}
+		}
+	}
+	
+	if (isPlacedXMinus) {
+		for (int i = 0; i < shipSize; i++) {
+			if (Map[inposY][inposX - i] == 1) {
+				isPlacedXMinus = false;
+			}
+		}
+	}
+	
+	if (isPlacedXPlus) {
+		for (int i = 0; i < shipSize; i++) {
+			if (Map[inposY][inposX + i] == 1) {
+				isPlacedXPlus = false;
+			}
+		}
+	}
+	
+
+	if (isPlacedYPlus) {
+		return YPlus;
+	}
+	else if (isPlacedYMinus) {
+		return YMinus;
+	}
+	else if (isPlacedXPlus) {
+		return XPlus;
+	}
+	else if (isPlacedXMinus) {
+		return XMinus;
+	}
+	else {
+		return cant;
+	}
+	
 	
 }
-bool Weekend0920::PosXCan(Battleship inship)
+
+void Weekend0920::BattlePhase()
 {
-	//true +방향가능
-	//false -방향가능
-	for (int i = 0; i < inship.Size; i++) {
-		if (Map[inship.PosY][inship.PosX+i] == 1)return true;
-	}
+	int HP=10;
 
-	return false;
-}
+	printf("BattleShip 게임을 시작합니다 \n");
+	printf("지정된 횟수안에 함선을 격침시키세요! \n");
 
-bool Weekend0920::PosYCan(Battleship inship)
-{
-	//true +방향가능
-	//false -방향가능
-	for (int i = 0; i < inship.Size; i++) {
-		if (Map[inship.PosY+i][inship.PosX] == 1)return true;
-	}
-	return false;
-}
 
-bool Weekend0920::canPlace(int inposX, int inposY, int shipSize)
-{
-	bool isPlaceX;
-	bool isPlaceY;
-	if (inposX + shipSize >= MapWidth && inposX - shipSize < 0) {
-		isPlaceX = false;
-	}
-	else {
-		isPlaceX = true;
-	}
-
-	if (inposY + shipSize >= MapHeight && inposY - shipSize < 0) {
-		isPlaceY = false;
-	}
-	else {
-		isPlaceY = true;
-	}
-
-	if (isPlaceX || isPlaceY) { return true; }
-	else { return false; }
 }
 
 
@@ -220,12 +262,12 @@ void Weekend0920::PrintMap()
 		printf("%d ", y);
 		for (int x = 0; x < MapWidth; x++) {
 			
-			if (Map[y][x] == 0 || isHit == true) {
+			if (Map[y][x] == 0 && isHit == true) {
 				printf("0 ");
-			}else if (Map[y][x] == 1 || isHit == true) {
+			}else if (Map[y][x] == 1 && isHit == true) {
 				printf("X ");
 			}
-			else if(Map[y][x] == 3){
+			else if(Map[y][x] == 3 || isHit == false){
 				printf(". ");
 			}
 		}

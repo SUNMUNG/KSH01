@@ -6,11 +6,10 @@ public:
 	void PrintMap();
 	void InitializeMap();
 	void DecidePos(Battleship inship);
-	void PlaceShip(Battleship inship);
-	bool PosXCan(Battleship inship);
-	bool PosYCan(Battleship inship);
+	void PlaceShip(Battleship inship,int angle);
 
-	bool canPlace(int inposX,int inposY,int shipSize);
+	int canPlace(int inposX,int inposY,int shipSize);
+	void BattlePhase();
 
 	Weekend0920() = default;
 	virtual ~Weekend0920() {};
