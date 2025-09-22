@@ -20,6 +20,7 @@
 #include "practice0917.h"
 #include "practice0918.h"
 #include "practice0919.h"
+#include "practice0922.h"
 #include "GameManager.h"
 
 
@@ -120,15 +121,18 @@ int main() {
 	//pra0919.TestCircularQueue();
 	//pra0919.TestCircularQueue2();
 
-	Weekend0920 weekend0920;
+	/*Weekend0920 weekend0920;
 	Battleship cruiser(3, 1002);
 	Battleship destroyer(2, 1001);
 	Battleship aircraftCarrier(4, 1003);
 	Battleship battleship(5, 1004);
-	weekend0920.InitializeMap(destroyer, cruiser, aircraftCarrier, battleship);
+	weekend0920.InitializeMap(destroyer, cruiser, aircraftCarrier, battleship);*/
 	//weekend0920.PrintAllMap();
-	weekend0920.BattlePhase(destroyer, cruiser, aircraftCarrier, battleship);
+	//weekend0920.BattlePhase(destroyer, cruiser, aircraftCarrier, battleship);
 
+
+	practice0922 pra0922;
+	pra0922.TestBinarySearchTree();
 
 }
 

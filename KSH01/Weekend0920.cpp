@@ -62,9 +62,7 @@ void Weekend0920::PlaceShip(Battleship inship,int angle)
 		cant
 	};
 	
-
-
-
+	//가능한 방향 으로 배치 
 	if (angle== XPlus) {
 		for (int i = 0; i < inship.Size; i++) {
 			Map[inship.PosY][inship.PosX+i] = inship.ShipNumber;
@@ -105,6 +103,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 		cant
 	};
 
+	//XY 방향 가능한곳 체크
 	if (inposY + shipSize >= MapHeight) {
 		isPlacedYPlus = false;
 	}
@@ -118,6 +117,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 		isPlacedXMinus = false;
 	}
 
+	//배치될곳에 이미 함선이 배치되어있는지
 	if (isPlacedYMinus) {
 		for (int i = 0; i < shipSize; i++) {
 			if (Map[inposY - i][inposX] > 1000) {
@@ -125,7 +125,8 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 			}
 		}
 	}
-	
+
+	//배치될곳에 이미 함선이 배치되어있는지
 	if (isPlacedYPlus) {
 		for (int i = 0; i < shipSize; i++) {
 			if (Map[inposY + i][inposX] > 1000) {
@@ -133,7 +134,8 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 			}
 		}
 	}
-	
+
+	//배치될곳에 이미 함선이 배치되어있는지
 	if (isPlacedXMinus) {
 		for (int i = 0; i < shipSize; i++) {
 			if (Map[inposY][inposX - i] > 1000) {
@@ -141,7 +143,8 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 			}
 		}
 	}
-	
+
+	//배치될곳에 이미 함선이 배치되어있는지
 	if (isPlacedXPlus) {
 		for (int i = 0; i < shipSize; i++) {
 			if (Map[inposY][inposX + i] > 1000) {
@@ -150,23 +153,43 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 		}
 	}
 	
+	//가능한 방향중 랜덤
+	int RandNum = rand() % 4;
+	bool isplaced = false;
+	do
+	{
+		RandNum = rand() % 4;
+		switch (RandNum) {
+		case 0:
+			if (isPlacedYPlus) {
+			return YPlus;
+			isplaced = true;
+		}
+			  break;
+		case 1:
+			if (isPlacedYMinus) {
+				return YMinus;
+				isplaced = true;
+			}
+			break;
+		case 2:
+			if (isPlacedXPlus) {
+				return XPlus;
+				isplaced = true;
+			}
+			break;
+		case 3:
+			if (isPlacedXMinus) {
+				return XMinus;
+				isplaced = true;
+			}
+			break;
+		default:
+			break;
+		}
+		
+	} while (!isplaced);
 
-	if (isPlacedYPlus) {
-		return YPlus;
-	}
-	else if (isPlacedYMinus) {
-		return YMinus;
-	}
-	else if (isPlacedXPlus) {
-		return XPlus;
-	}
-	else if (isPlacedXMinus) {
-		return XMinus;
-	}
-	else {
-		return cant;
-	}
-	
 	
 }
 
@@ -195,6 +218,7 @@ void Weekend0920::BattlePhase(Battleship indestroyer, Battleship incruiser, Batt
 	while (playerHP > 0 && RemainShip > 0)
 	{
 		PrintHideMap();
+		PrintAllMap();
 		printf("공격 할 좌표를 입력하세요 . (X Y)\n");
 		printf("남은 기회 : %d\n", playerHP);
 		printf("남은 함선 : %d\n", RemainShip);
@@ -246,6 +270,12 @@ void Weekend0920::BattlePhase(Battleship indestroyer, Battleship incruiser, Batt
 		}
 		
 		
+	}
+	if (RemainShip <= 0 && playerHP>0) {
+		printf("모든 함선을 격침시켰습니다.\n");
+	}
+	else {
+		printf("패배했습니다.\n");
 	}
 
 	printf("게임이 종료되었습니다.\n");
