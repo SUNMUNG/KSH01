@@ -4,5 +4,6 @@ class practice0922
 public:
 
 	void TestBinarySearchTree();
+	void TestBinarySearchTreeLoop();
 };
 

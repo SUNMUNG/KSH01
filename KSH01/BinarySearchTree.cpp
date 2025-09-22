@@ -6,11 +6,73 @@ BinarySearchTree::~BinarySearchTree()
 	DestroyTree(Root);
 }
 
+void BinarySearchTree::LoopInsert(int Inkey)
+{
+	Root = LoopInsertNode(Root, Inkey);
+}
+
+void BinarySearchTree::LoopDelete(int Inkey)
+{
+	Root = LoopDeleteNode(Root, Inkey);
+}
+
+TreeNode* BinarySearchTree::LoopSearch(int Inkey)
+{
+	return LoopSearchNode(Root, Inkey);
+}
+
+TreeNode* BinarySearchTree::LoopInsertNode(TreeNode* inNode, int inKey)
+{
+	TreeNode* tmp =inNode;
+	TreeNode* prev =nullptr;
+	if (inNode == nullptr) {
+		return new TreeNode(inKey);
+	}
+
+	while (tmp != nullptr) {
+		
+		if (inKey < tmp->Key) {
+			prev = tmp;
+			tmp = tmp->Left;
+		}
+		else if (inKey > tmp->Key) {
+			prev = tmp;
+			tmp = tmp->Right;
+		}
+	}
+	tmp = new TreeNode(inKey);
+	
+	if (inKey < inNode->Key) {
+		prev->Left = tmp;
+	}
+	else if (inKey > inNode->Key) {
+		prev->Right = tmp;
+	}
+	return inNode;
+
+	
+}
+
+TreeNode* BinarySearchTree::LoopDeleteNode(TreeNode* inNode, int inKey)
+{
+	return inNode;
+}
+
+TreeNode* BinarySearchTree::LoopSearchNode(TreeNode* inNode, int inKey)
+{
+	return inNode;
+}
+
+TreeNode* BinarySearchTree::LoopFindMinNode(TreeNode* inNode)
+{
+	return inNode;
+}
+
+
 void BinarySearchTree::Insert(int Inkey)
 {
 	Root = InsertNode(Root, Inkey);
 }
-
 void BinarySearchTree::Delete(int Inkey)
 {
 	Root = DeleteNode(Root, Inkey);
@@ -21,6 +83,8 @@ TreeNode* BinarySearchTree::Search(int Inkey)
 	return SearchNode(Root,Inkey);
 }
 
+
+
 void BinarySearchTree::printPreOrder() const
 {
 	printf("PreOrder : ");
@@ -30,10 +94,16 @@ void BinarySearchTree::printPreOrder() const
 
 void BinarySearchTree::printInOrder() const
 {
+	printf("InOrder : ");
+	InorderTraversal(Root);
+	printf("\n");
 }
 
 void BinarySearchTree::printPostOrder() const
 {
+	printf("PostOrder : ");
+	PostOrderTraversal(Root);
+	printf("\n");
 }
 
 TreeNode* BinarySearchTree::InsertNode(TreeNode* inNode, int inKey)
@@ -109,8 +179,10 @@ TreeNode* BinarySearchTree::FindMinNode(TreeNode* inNode)
 	return inNode;
 }
 
+
 void BinarySearchTree::PreorderTraversal(const TreeNode* inNode) const
 {
+	//Æ®¿Þ¿À
 	if (inNode != nullptr)
 	{
 		printf("%d ", inNode->Key);
@@ -121,10 +193,24 @@ void BinarySearchTree::PreorderTraversal(const TreeNode* inNode) const
 
 void BinarySearchTree::InorderTraversal(const TreeNode* inNode) const 
 {
+	//¿ÞÆ®¿À
+	if (inNode != nullptr)
+	{
+		PreorderTraversal(inNode->Left);
+		printf("%d ", inNode->Key);
+		PreorderTraversal(inNode->Right);
+	}
 }
 
 void BinarySearchTree::PostOrderTraversal(const TreeNode* inNode) const
 {
+	//¿Þ¿ÀÆ®
+	if (inNode != nullptr)
+	{
+		PreorderTraversal(inNode->Left);
+		PreorderTraversal(inNode->Right);
+		printf("%d ", inNode->Key);
+	}
 }
 
 void BinarySearchTree::DestroyTree(TreeNode* inNode)

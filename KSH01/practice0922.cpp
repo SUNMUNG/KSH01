@@ -9,4 +9,19 @@ void practice0922::TestBinarySearchTree()
 	bst.Insert(10);
 	bst.Insert(20);
 	bst.printPreOrder();
+	bst.printInOrder();
+	bst.printPostOrder();
 }
+
+void practice0922::TestBinarySearchTreeLoop()
+{
+	BinarySearchTree bst;
+	bst.LoopInsert(30);
+	bst.LoopInsert(50);
+	bst.LoopInsert(10);
+	bst.LoopInsert(20);
+	bst.printPreOrder();
+	bst.printInOrder();
+	bst.printPostOrder();
+}
+

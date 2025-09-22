@@ -133,6 +133,7 @@ int main() {
 
 	practice0922 pra0922;
 	pra0922.TestBinarySearchTree();
+	pra0922.TestBinarySearchTreeLoop();
 
 }
 
