@@ -121,8 +121,13 @@ int main() {
 	//pra0919.TestCircularQueue2();
 
 	Weekend0920 weekend0920;
-	weekend0920.InitializeMap();
-	weekend0920.PrintMap();
+	Battleship cruiser(3, 1002);
+	Battleship destroyer(2, 1001);
+	Battleship aircraftCarrier(4, 1003);
+	Battleship battleship(5, 1004);
+	weekend0920.InitializeMap(destroyer, cruiser, aircraftCarrier, battleship);
+	//weekend0920.PrintAllMap();
+	weekend0920.BattlePhase(destroyer, cruiser, aircraftCarrier, battleship);
 
 
 }

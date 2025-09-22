@@ -3,13 +3,15 @@
 class Weekend0920
 {
 public:
-	void PrintMap();
-	void InitializeMap();
+	void PrintHideMap();
+	void PrintAllMap();
+	void InitializeMap(Battleship destroyer, Battleship cruiser, Battleship aircraftCarrier, Battleship battleship);
 	void DecidePos(Battleship inship);
 	void PlaceShip(Battleship inship,int angle);
 
 	int canPlace(int inposX,int inposY,int shipSize);
-	void BattlePhase();
+	void BattlePhase(Battleship destroyer, Battleship cruiser, Battleship aircraftCarrier, Battleship battleship);
+	bool AttackCheck(int AtkX, int AtkY);
 
 	Weekend0920() = default;
 	virtual ~Weekend0920() {};

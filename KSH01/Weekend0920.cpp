@@ -4,24 +4,21 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "Battleship.h"
 
 
-void Weekend0920::InitializeMap()
+void Weekend0920::InitializeMap(Battleship destroyer, Battleship cruiser, Battleship aircraftCarrier, Battleship battleship)
 {
-	Battleship cruiser(3);
-	Battleship destroyer(2);
-	Battleship aircraftCarrier(4);
-	Battleship battleship(5);
+	/*Battleship cruiser(3,1002);
+	Battleship destroyer(2,1001);
+	Battleship aircraftCarrier(4,1003);
+	Battleship battleship(5,1004);*/
 	
 	DecidePos(destroyer);
 	DecidePos(cruiser);
 	DecidePos(aircraftCarrier);
 	DecidePos(battleship);
-
-
-
-
 }
 
 void Weekend0920::DecidePos(Battleship inship)
@@ -41,8 +38,6 @@ void Weekend0920::DecidePos(Battleship inship)
 		inship.PosX = rand() % MapWidth;
 		inship.PosY = rand() % MapHeight;
 		
-		//int Angle = rand() % 2;
-
 		Angle = canPlace(inship.PosX, inship.PosY, inship.Size);//어느방향이 가능한지
 		if (Angle == cant) {
 			isDecide = false;
@@ -51,74 +46,6 @@ void Weekend0920::DecidePos(Battleship inship)
 			PlaceShip(inship, Angle);
 			isDecide = true;
 		}
-		
-
-		/*if (Angle == 0) {
-			if (inship.PosX + inship.Size >= MapWidth && inship.PosX - inship.Size < 0) {
-				inship.PosX = rand() % MapWidth;
-			}
-			else {
-				if (inship.PosX + inship.Size >= MapWidth) {
-					for (int i = 0; i < inship.Size; i++) {
-						if (Map[inship.PosY][inship.PosX-i] == 1) {
-							Angle = 1;
-						}
-					}
-					Map[inship.PosY][inship.PosX] = 1;
-					for (int i = 1; i < inship.Size; i++) {
-						Map[inship.PosY][inship.PosX - i] = 1;
-					}
-					isDecide = true;
-
-				}
-				else {
-					for (int i = 0; i < inship.Size; i++) {
-						if (Map[inship.PosY][inship.PosX + i-1] == 1) {
-							Angle = 1;
-						}
-					}
-					Map[inship.PosY][inship.PosX] = 1;
-					for (int i = 1; i < inship.Size; i++) {
-						Map[inship.PosY][inship.PosX + i] = 1;
-					}
-					isDecide = true;
-				}
-			}
-		}
-		
-		if (Angle == 1) {
-			if (inship.PosY + inship.Size >= MapWidth && inship.PosY - inship.Size < 0) {
-				inship.PosY = rand() % MapWidth;
-			}
-			else {
-				if (inship.PosY + inship.Size >= MapWidth) {
-					for (int i = 0; i < inship.Size; i++) {
-						if (Map[inship.PosY-i][inship.PosX] == 1) {
-							inship.PosY = rand() % MapHeight;
-						}
-					}
-					Map[inship.PosY][inship.PosX] = 1;
-					for (int i = 1; i < inship.Size; i++) {
-						Map[inship.PosY - i][inship.PosX] = 1;
-					}
-					isDecide = true;
-
-				}
-				else {
-					for (int i = 0; i < inship.Size; i++) {
-						if (Map[inship.PosY + i -1][inship.PosX] == 1) {
-							inship.PosY = rand() % MapHeight;
-						}
-					}
-					Map[inship.PosY][inship.PosX] = 1;
-					for (int i = 1; i < inship.Size; i++) {
-						Map[inship.PosY + i][inship.PosX] = 1;
-					}
-					isDecide = true;
-				}
-			}
-		}*/
-		
 
 	} while (!isDecide);
 	
@@ -134,25 +61,28 @@ void Weekend0920::PlaceShip(Battleship inship,int angle)
 		YMinus,
 		cant
 	};
+	
+
+
 
 	if (angle== XPlus) {
 		for (int i = 0; i < inship.Size; i++) {
-			Map[inship.PosY][inship.PosX+i] = 1;
+			Map[inship.PosY][inship.PosX+i] = inship.ShipNumber;
 		}
 	}
 	else if (angle == XMinus) {
 		for (int i = 0; i < inship.Size; i++) {
-			Map[inship.PosY][inship.PosX-i] = 1;
+			Map[inship.PosY][inship.PosX-i] = inship.ShipNumber;
 		}
 	}
 	else if (angle == YPlus) {
 		for (int i = 0; i < inship.Size; i++) {
-			Map[inship.PosY+i][inship.PosX] = 1;
+			Map[inship.PosY+i][inship.PosX] = inship.ShipNumber;
 		}
 	}
 	else if (angle == YMinus) {
 		for (int i = 0; i < inship.Size; i++) {
-			Map[inship.PosY - i][inship.PosX] = 1;
+			Map[inship.PosY - i][inship.PosX] = inship.ShipNumber;
 		}
 	}
 	
@@ -174,6 +104,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 		YMinus,
 		cant
 	};
+
 	if (inposY + shipSize >= MapHeight) {
 		isPlacedYPlus = false;
 	}
@@ -189,7 +120,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 
 	if (isPlacedYMinus) {
 		for (int i = 0; i < shipSize; i++) {
-			if (Map[inposY - i][inposX] == 1) {
+			if (Map[inposY - i][inposX] > 1000) {
 				isPlacedYMinus = false;
 			}
 		}
@@ -197,7 +128,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 	
 	if (isPlacedYPlus) {
 		for (int i = 0; i < shipSize; i++) {
-			if (Map[inposY + i][inposX] == 1) {
+			if (Map[inposY + i][inposX] > 1000) {
 				isPlacedYPlus = false;
 			}
 		}
@@ -205,7 +136,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 	
 	if (isPlacedXMinus) {
 		for (int i = 0; i < shipSize; i++) {
-			if (Map[inposY][inposX - i] == 1) {
+			if (Map[inposY][inposX - i] > 1000) {
 				isPlacedXMinus = false;
 			}
 		}
@@ -213,7 +144,7 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 	
 	if (isPlacedXPlus) {
 		for (int i = 0; i < shipSize; i++) {
-			if (Map[inposY][inposX + i] == 1) {
+			if (Map[inposY][inposX + i] > 1000) {
 				isPlacedXPlus = false;
 			}
 		}
@@ -239,20 +170,121 @@ int Weekend0920::canPlace(int inposX, int inposY, int shipSize)
 	
 }
 
-void Weekend0920::BattlePhase()
+void Weekend0920::BattlePhase(Battleship indestroyer, Battleship incruiser, Battleship inaircraftCarrier, Battleship inbattleship)
 {
-	int HP=10;
-
+	int playerHP=50;
+	int Attack[2];
+	int RemainShip = 4;
 	printf("BattleShip 게임을 시작합니다 \n");
 	printf("지정된 횟수안에 함선을 격침시키세요! \n");
+	
+	enum ShipNumber
+	{
+		destroyer = 1001,
+		cruiser = 1002,
+		aircraftCarrier = 1003,
+		battleship = 1004,
+	};
+	enum PosName
+	{
+		IsWater = 3,
+		IshitSucces = 5,
+		IshitFail = 6
+	};
+	
+	while (playerHP > 0 && RemainShip > 0)
+	{
+		PrintHideMap();
+		printf("공격 할 좌표를 입력하세요 . (X Y)\n");
+		printf("남은 기회 : %d\n", playerHP);
+		printf("남은 함선 : %d\n", RemainShip);
+		
+		for (int i = 0; i < 2; i++) {
+			std::cin >> Attack[i];
+		}
 
+		if (AttackCheck(Attack[0], Attack[1])==true) {
+			if (Map[Attack[1]][Attack[0]] == destroyer) {
+				indestroyer.HP--;
+				Map[Attack[1]][Attack[0]] = IshitSucces;
+				if (indestroyer.SunkCheck()) {
+					printf("destroyer 가 격침되었습니다.\n");
+					RemainShip--;
+					indestroyer.isSunk = false;
+				}
+			}else if (Map[Attack[1]][Attack[0]] == cruiser) {
+				incruiser.HP--;
+				Map[Attack[1]][Attack[0]] = IshitSucces;
+				if (incruiser.SunkCheck()) {
+					printf("cruiser 가 격침되었습니다.\n");
+					RemainShip--;
+					indestroyer.isSunk = false;
+				}
+			}
+			else if (Map[Attack[1]][Attack[0]] == aircraftCarrier) {
+				inaircraftCarrier.HP--;
+				Map[Attack[1]][Attack[0]] = IshitSucces;
+				if (inaircraftCarrier.SunkCheck()) {
+					printf("aircraftCarrier 가 격침되었습니다.\n");
+					RemainShip--;
+					indestroyer.isSunk = false;
+				}
+			}
+			else if (Map[Attack[1]][Attack[0]] == battleship) {
+				inbattleship.HP--;
+				Map[Attack[1]][Attack[0]] = IshitSucces;
+				if (inbattleship.SunkCheck()) {
+					printf("battleship 가 격침되었습니다.\n");
+					RemainShip--;
+					indestroyer.isSunk = false;
+				}
+			}
+			playerHP--;
+		}
+		else {
+			printf("공격이 유효하지 않았습니다 . \n");
+		}
+		
+		
+	}
 
+	printf("게임이 종료되었습니다.\n");
+	PrintAllMap();
+	
+}
+
+bool Weekend0920::AttackCheck(int AtkX, int AtkY)
+{
+	enum PosName
+	{
+		IsWater = 3,
+		IshitSucces =5,
+		IshitFail =6
+	};
+	
+	//shipnumber 1001번이후
+	if (Map[AtkY][AtkX] > 1000) { //공격안받은 함선에 해당되는 인트
+		printf("공격이 성공했습니다!\n");
+		return true;
+	}
+	else if (Map[AtkY][AtkX] == IsWater) { //공격안받은 바다에 해당되는 인트
+		printf("공격이 실패했습니다.\n");
+		Map[AtkY][AtkX] = IshitFail;
+		return true;
+	}
+	else if (Map[AtkY][AtkX] == IshitFail || Map[AtkY][AtkX] == IshitSucces) {
+		printf("이미 공격한 곳입니다.\n");
+		return false;
+	}
+	else {
+		printf("유효하지 않은 좌표 입니다.\n");
+		return false;
+	}
 }
 
 
-void Weekend0920::PrintMap()
+void Weekend0920::PrintHideMap()
 {
-	bool isHit = false;
 	printf("  ");
 	for (int i = 0; i < MapWidth; i++) {
 		printf("%d ", i);
@@ -261,14 +293,38 @@ void Weekend0920::PrintMap()
 	for (int y = 0; y < MapHeight; y++) {
 		printf("%d ", y);
 		for (int x = 0; x < MapWidth; x++) {
-			
-			if (Map[y][x] == 0 && isHit == true) {
+			//함선이 배치되지않은 지역 타격시
+			if (Map[y][x] == 6) {
 				printf("0 ");
-			}else if (Map[y][x] == 1 && isHit == true) {
+			}
+			//공격 성공된 함선
+			else if (Map[y][x] == 5) {
 				printf("X ");
 			}
-			else if(Map[y][x] == 3 || isHit == false){
+			//벽 or 숨겨진 함선
+			else if(Map[y][x] == 3 || Map[y][x] > 1000){
 				printf(". ");
+			}
+		}
+		printf("\n");
+	}
+}
+
+void Weekend0920::PrintAllMap()
+{
+	printf("  ");
+	for (int i = 0; i < MapWidth; i++) {
+		printf("%d ", i);
+	}
+	printf("\n");
+	for (int y = 0; y < MapHeight; y++) {
+		printf("%d ", y);
+		for (int x = 0; x < MapWidth; x++) {
+			if (Map[y][x] == 6 || Map[y][x] == 3) {
+				printf(". ");
+			}
+			else if (Map[y][x] == 5 || Map[y][x] > 1000) {
+				printf("X ");
 			}
 		}
 		printf("\n");
