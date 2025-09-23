@@ -21,6 +21,7 @@
 #include "practice0918.h"
 #include "practice0919.h"
 #include "practice0922.h"
+#include "practice0923.h"
 #include "GameManager.h"
 
 
@@ -131,9 +132,14 @@ int main() {
 	//weekend0920.BattlePhase(destroyer, cruiser, aircraftCarrier, battleship);
 
 
-	practice0922 pra0922;
+	/*practice0922 pra0922;
 	pra0922.TestBinarySearchTree();
-	pra0922.TestBinarySearchTreeLoop();
+	pra0922.TestBinarySearchTreeLoop();*/
+
+	practice0923 pra0923;
+	//pra0923.TestTemplate();
+	//pra0923.TestVector();
+	pra0923.TestVectorPractice();
 
 }
 

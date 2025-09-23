@@ -55,7 +55,26 @@ TreeNode* BinarySearchTree::LoopInsertNode(TreeNode* inNode, int inKey)
 
 TreeNode* BinarySearchTree::LoopDeleteNode(TreeNode* inNode, int inKey)
 {
-	return inNode;
+	//찾는값이 없음
+	TreeNode* prev;
+	if (inNode == nullptr) {
+		return inNode;
+	}
+
+	while (inNode != nullptr) {
+		if (inNode->Key == inKey) {
+
+		}
+		else if(inNode->Key < inKey){
+			prev = inNode;
+			inNode = inNode->Right;
+		}
+		else if(inNode->Key > inKey){
+			prev = inNode;
+			inNode = inNode->Left;
+		}
+	}
+	
 }
 
 TreeNode* BinarySearchTree::LoopSearchNode(TreeNode* inNode, int inKey)

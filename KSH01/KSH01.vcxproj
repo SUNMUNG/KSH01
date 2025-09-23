@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +129,7 @@
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Battleship.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
+    <ClCompile Include="Caculator.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="CircularQueue.cpp" />
     <ClCompile Include="CircularQueue2.cpp" />
@@ -152,6 +154,7 @@
     <ClCompile Include="practice0918.cpp" />
     <ClCompile Include="practice0919.cpp" />
     <ClCompile Include="practice0922.cpp" />
+    <ClCompile Include="practice0923.cpp" />
     <ClCompile Include="practice_0905.cpp" />
     <ClCompile Include="practice_0908.cpp" />
     <ClCompile Include="Shape.cpp" />
@@ -169,9 +172,11 @@
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Battleship.h" />
     <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="Caculator.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CircularQueue.h" />
     <ClInclude Include="CircularQueue2.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Eagle.h" />
     <ClInclude Include="FIxedStack.h" />
@@ -195,6 +200,7 @@
     <ClInclude Include="practice0918.h" />
     <ClInclude Include="practice0919.h" />
     <ClInclude Include="practice0922.h" />
+    <ClInclude Include="practice0923.h" />
     <ClInclude Include="practice_0905.h" />
     <ClInclude Include="practice_0908.h" />
     <ClInclude Include="Shape.h" />
